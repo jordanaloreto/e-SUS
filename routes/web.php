@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PacientesController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/dashboard', function () {
-    return view('dashboard.corpo');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/dashboard', function () {
+//     return view('dashboard.corpo');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::get('/pacientes/listagemPaciente', [PacientesController::class, 'index'])->name('listagemPaciente');
