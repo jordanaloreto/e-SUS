@@ -25,3 +25,4 @@ Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 Route::get('/pacientes/listagemPaciente', [PacientesController::class, 'index'])->name('listagemPaciente');
+Route::get('/pacientes/cadastroPaciente', [PacientesController::class, 'form'])->name('cadastroPaciente');

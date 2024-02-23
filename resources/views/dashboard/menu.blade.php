@@ -36,7 +36,7 @@
             <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>
         </li>
         <li class="menu-item">
-            <a href="app-email.html" class="menu-link">
+            <a href="{{route('listagemPaciente')}}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-mail"></i>
                 <div data-i18n="Email">Pacientes</div>
             </a>

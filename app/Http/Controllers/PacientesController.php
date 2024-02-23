@@ -16,6 +16,11 @@ class PacientesController extends Controller
         return view('pacientes.listagemPaciente');
     }
 
+    public function form()
+    {
+        return view('pacientes.cadastroPaciente');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
