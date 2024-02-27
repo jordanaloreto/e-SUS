@@ -18,7 +18,7 @@ class PacientesController extends Controller
 
     public function form()
     {
-        return view('pacientes.cadastroPaciente');
+        return view('pacientes.cadastroPacientes');
     }
 
     /**

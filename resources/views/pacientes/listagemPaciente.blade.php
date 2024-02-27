@@ -7,7 +7,7 @@
     <br>
     <div class="container">
         <div class="text-end">
-            <button type="button" class="btn btn-primary" href="{{route('cadastroPaciente')}}">Cadastrar</button>
+            <a type="button" class="btn btn-primary" href="{{route('cadastroPaciente')}}">Cadastrar</a>
         </div>
         <br>
         <div class="row">
