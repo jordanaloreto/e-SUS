@@ -5,7 +5,7 @@
 @section('content')
 
     <body>
-        <form method="post" action="{{ route('cadastroPaciente') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('storePaciente') }}" enctype="multipart/form-data">
             @csrf
             <br>
             <div class="container">
@@ -13,84 +13,125 @@
                 <div class="col-xxl">
                     <div class="card mb-4">
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Basic with Icons</h5> <small class="text-muted float-end">Merged input
-                                group</small>
+                            <h5 class="mb-0">Cadastro Paciente</h5>
                         </div>
                         <div class="card-body">
-                            <form>
+                           
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Name</label>
+                                    <label class="col-sm-2 col-form-label" for="nomePaciente">Nome</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                                    class="ti ti-user"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                                placeholder="John Doe" aria-label="John Doe"
-                                                aria-describedby="basic-icon-default-fullname2" />
+                                            <span id="nomePaciente" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="text" class="form-control" id="nomePaciente" name="nomePaciente"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Company</label>
+                                    <label class="col-sm-2 col-form-label" for="dNascimentoPaciente">Data de Nascimento</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-company2" class="input-group-text"><i
-                                                    class="ti ti-building"></i></span>
-                                            <input type="text" id="basic-icon-default-company" class="form-control"
-                                                placeholder="ACME Inc." aria-label="ACME Inc."
-                                                aria-describedby="basic-icon-default-company2" />
+                                            <span id="dNascimentoPaciente" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="date" class="form-control" id="dNascimentoPaciente" name="dNascimentoPaciente"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Email</label>
+                                    <label class="col-sm-2 col-form-label" for="sexoPaciente">Sexo</label>
                                     <div class="col-sm-10">
-                                        <div class="input-group input-group-merge">
-                                            <span class="input-group-text"><i class="ti ti-mail"></i></span>
-                                            <input type="text" id="basic-icon-default-email" class="form-control"
-                                                placeholder="john.doe" aria-label="john.doe"
-                                                aria-describedby="basic-icon-default-email2" />
-                                            <span id="basic-icon-default-email2"
-                                                class="input-group-text">@example.com</span>
-                                        </div>
-                                        <div class="form-text"> You can use letters, numbers & periods </div>
+                                      <select name="sexoPaciente" id="sexoPaciente" class="select2 form-select" data-allow-clear="true">
+                                        <option value="">Selecione</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Feminino">Feminino</option>
+                                      </select>
                                     </div>
-                                </div>
+                                  </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 form-label" for="basic-icon-default-phone">Phone No</label>
+                                    <label class="col-sm-2 col-form-label" for="cpfPaciente">CPF</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-phone2" class="input-group-text"><i
-                                                    class="ti ti-phone"></i></span>
-                                            <input type="text" id="basic-icon-default-phone"
-                                                class="form-control phone-mask" placeholder="658 799 8941"
-                                                aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" />
+                                            <span id="cpfPaciente" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="text" class="form-control  cpf" id="cpfPaciente" name="cpfPaciente"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 form-label" for="basic-icon-default-message">Message</label>
+                                    <label class="col-sm-2 col-form-label" for="susPaciente">SUS</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="basic-icon-default-message2" class="input-group-text"><i
-                                                    class="ti ti-message-dots"></i></span>
-                                            <textarea id="basic-icon-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?"
-                                                aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+                                            <span id="susPaciente" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="text" class="form-control" id="susPaciente" name="susPaciente"/>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="telefonePaciente">Telefone</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="telefonePaciente" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="text" class="form-control telefone" id="telefonePaciente" name="telefonePaciente"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="enderecoPaciente">Endereço</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="enderecoPaciente" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="text" class="form-control" id="enderecoPaciente" name="enderecoPaciente"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="cepPaciente">CEP</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="cepPaciente" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="text" class="form-control cep" id="cepPaciente" name="cepPaciente"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="maePaciente">Nome Mãe</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="maePaciente" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="text" class="form-control" id="maePaciente" name="maePaciente"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="paiPaciente">Nome Pai</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="paiPaciente" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="text" class="form-control" id="paiPaciente" name="paiPaciente"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <div class="row justify-content-end">
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Send</button>
+                                        <button type="submit" class="btn btn-primary">Cadastrar</button>
                                     </div>
                                 </div>
-                            </form>
+                        
                         </div>
                     </div>
                 </div>
             </div>
             </div>
         </form>
+
+
     </body>
 
 @endsection

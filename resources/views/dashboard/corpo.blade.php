@@ -60,6 +60,8 @@
     <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
     <script src="/assets/vendor/js/template-customizer.js"></script>
 
+    
+
 
 </head>
 
@@ -351,6 +353,20 @@
 
         <!-- Page JS -->
         <script src="/assets/js/dashboards-crm.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+
+        <script>
+            $('.cpf').mask('###.###.###-##', {
+                reverse: false
+            });
+            $('.telefone').mask('(##) # ####-####', {
+                reverse: false
+            });
+            $('.cep').mask('##.###-###', {
+                reverse: false
+            });
+        </script>
 
 </body>
 

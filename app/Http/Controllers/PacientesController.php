@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pacientes;
 use Illuminate\Http\Request;
 
 class PacientesController extends Controller
@@ -13,6 +14,7 @@ class PacientesController extends Controller
      */
     public function index()
     {
+        $pacientes = Pacientes::all();
         return view('pacientes.listagemPaciente');
     }
 
@@ -39,7 +41,21 @@ class PacientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pacientes = new Pacientes();
+        $pacientes->nomePaciente = $request->nomePaciente;
+        $pacientes->dNascimentoPaciente = $request->dNascimentoPaciente;
+        $pacientes->sexoPaciente = $request->sexoPaciente;
+        $pacientes->cpfPaciente = $request->cpfPaciente;
+        $pacientes->susPaciente = $request->susPaciente;
+        $pacientes->telefonePaciente = $request->telefonePaciente;
+        $pacientes->enderecoPaciente = $request->enderecoPaciente;
+        $pacientes->cepPaciente = $request->cepPaciente;
+        $pacientes->maePaciente = $request->maePaciente;
+        $pacientes->paiPaciente = $request->paiPaciente;
+
+        $pacientes->save();
+
+        return back();
     }
 
     /**
