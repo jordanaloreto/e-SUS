@@ -27,3 +27,6 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 Route::get('/pacientes/listagemPaciente', [PacientesController::class, 'index'])->name('listagemPaciente');
 Route::get('/pacientes/cadastroPaciente', [PacientesController::class, 'form'])->name('cadastroPaciente');
 Route::post('/pacientes/storePaciente', [PacientesController::class, 'store'])->name('storePaciente');
+Route::get('/pacientes/createPaciente', [PacientesController::class, 'create'])->name('createPaciente');
+Route::get('/pacientes/deletarPaciente/{id}', [PacientesController::class, 'destroy'])->name('deletarPaciente');
+

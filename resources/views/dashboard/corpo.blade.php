@@ -21,6 +21,7 @@
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://1.envato.market/vuexy_admin">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 
@@ -53,13 +54,22 @@
 
     <!-- Page CSS -->
 
+    <link rel="stylesheet" href="/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+    <link rel="stylesheet" href="/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+    <link rel="stylesheet" href="/assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css">
+    <link rel="stylesheet" href="/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css">
+    <!-- Row Group CSS -->
+    <link rel="stylesheet" href="/assets/vendor/libs/datatables-rowgroup-bs5/rowgroup.bootstrap5.css">
+    <!-- Form Validation -->
+
 
     <!-- Helpers -->
     <script src="/assets/vendor/js/helpers.js"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
     <script src="/assets/vendor/js/template-customizer.js"></script>
-
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.min.js"></script>
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.1/css/dataTables.dataTables.min.css"/>
     
 
 
@@ -332,7 +342,7 @@
         <!-- Core JS -->
         <!-- build:js assets/vendor/js/core.js -->
 
-        <script src="/assets/vendor/libs/jquery/jquery.js"></script>
+      
         <script src="/assets/vendor/libs/popper/popper.js"></script>
         <script src="/assets/vendor/js/bootstrap.js"></script>
         <script src="/assets/vendor/libs/node-waves/node-waves.js"></script>
@@ -343,6 +353,8 @@
         <script src="/assets/vendor/js/menu.js"></script>
 
         <!-- endbuild -->
+        <script src="/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+        <script src="/assets/js/tables-datatables-basic.js"></script>
 
         <!-- Vendors JS -->
         <script src="/assets/vendor/libs/apex-charts/apexcharts.js"></script>

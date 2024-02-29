@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pacientes;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class PacientesController extends Controller
 {
@@ -30,8 +31,19 @@ class PacientesController extends Controller
      */
     public function create()
     {
-        //
+        $pacientes = Pacientes::select(['id', 'nomePaciente', 'cpfPaciente']);
+    
+        return DataTables::of($pacientes)
+            ->rawColumns(['nomePaciente', 'cpfPaciente'])
+            ->addColumn('acao', function ($pacientes) {
+                $editar = '<a href="#EditarPaciente' . $pacientes->id . '" alt="Editar" data-target="#EditarPaciente' . $pacientes->id . '" data-id="' . $pacientes->id . '" data-toggle="modal"><i class="fas fa-pencil-alt" aria-hidden="true" style="font-size:15px;color:#007bff;"></i></a>';
+                $excluir = '<a href="/pacientes/deletarPaciente/' . $pacientes->id . '" alt="Excluir" data-target="/pacientes/deletarPaciente/'.$pacientes->id . '" data-id="' . $pacientes->id . '" data-toggle="modal"><i class="far fa-trash-alt" aria-hidden="true" style="font-size:15px;color:#cc0808;"></i></a>';
+                return  $editar . '&nbsp;&nbsp;' . $excluir;
+            })
+            ->rawColumns(['acao'])
+            ->make(true);
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -100,6 +112,8 @@ class PacientesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Pacientes::findOrFail($id)->delete();
+
+        return redirect()->route('listagemPaciente')->with('msg', 'Paciente excluído com sucesso!');
     }
 }
