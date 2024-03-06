@@ -7,6 +7,10 @@
     <body>
         <form method="post" action="{{ route('storePaciente') }}" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" class="form-control" id="id" name="id" @if(!@empty($id))
+                
+           value="{{$id}}"@endif/>
+
             <br>
             <div class="container">
                 <!-- Basic with Icons -->
@@ -23,7 +27,9 @@
                                         <div class="input-group input-group-merge">
                                             <span id="nomePaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control" id="nomePaciente" name="nomePaciente"/>
+                                            <input type="text" class="form-control" " @if(!@empty($pacientes))
+                
+                                            value="{{$pacientes->nomePaciente}}"@endif id="nomePaciente" name="nomePaciente"/>
                                         </div>
                                     </div>
                                 </div>

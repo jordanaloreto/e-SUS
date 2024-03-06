@@ -36,7 +36,7 @@ class PacientesController extends Controller
         return DataTables::of($pacientes)
             ->rawColumns(['nomePaciente', 'cpfPaciente'])
             ->addColumn('acao', function ($pacientes) {
-                $editar = '<a href="#EditarPaciente' . $pacientes->id . '" alt="Editar" data-target="#EditarPaciente' . $pacientes->id . '" data-id="' . $pacientes->id . '" data-toggle="modal"><i class="fas fa-pencil-alt" aria-hidden="true" style="font-size:15px;color:#007bff;"></i></a>';
+                $editar = '<a href="/pacientes/editarPaciente/' . $pacientes->id . '" alt="Editar" data-target="#EditarPaciente' . $pacientes->id . '" data-id="' . $pacientes->id . '" data-toggle="modal"><i class="fas fa-pencil-alt" aria-hidden="true" style="font-size:15px;color:#007bff;"></i></a>';
                 $excluir = '<a href="/pacientes/deletarPaciente/' . $pacientes->id . '" alt="Excluir" data-target="/pacientes/deletarPaciente/'.$pacientes->id . '" data-id="' . $pacientes->id . '" data-toggle="modal"><i class="far fa-trash-alt" aria-hidden="true" style="font-size:15px;color:#cc0808;"></i></a>';
                 return  $editar . '&nbsp;&nbsp;' . $excluir;
             })
@@ -53,7 +53,11 @@ class PacientesController extends Controller
      */
     public function store(Request $request)
     {
-        $pacientes = new Pacientes();
+        if(!empty($request->id)){
+            $pacientes = Pacientes::findOrFail($request->id);
+        }else{
+            $pacientes = new Pacientes();
+        }
         $pacientes->nomePaciente = $request->nomePaciente;
         $pacientes->dNascimentoPaciente = $request->dNascimentoPaciente;
         $pacientes->sexoPaciente = $request->sexoPaciente;
@@ -90,7 +94,9 @@ class PacientesController extends Controller
     public function edit($id)
     {
         // Find the patient by ID
-        $paciente = Pacientes::findOrFail($id);
+        $pacientes = Pacientes::findOrFail($id);
+        return view('pacientes.cadastroPacientes')->with('msg', 'Paciente Editado!')
+        ->with('id', $id)->with('pacientes', $pacientes);
     
     }
     
