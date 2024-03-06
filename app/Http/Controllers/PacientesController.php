@@ -89,8 +89,11 @@ class PacientesController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Find the patient by ID
+        $paciente = Pacientes::findOrFail($id);
+    
     }
+    
 
     /**
      * Update the specified resource in storage.

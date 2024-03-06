@@ -29,4 +29,5 @@ Route::get('/pacientes/cadastroPaciente', [PacientesController::class, 'form'])-
 Route::post('/pacientes/storePaciente', [PacientesController::class, 'store'])->name('storePaciente');
 Route::get('/pacientes/createPaciente', [PacientesController::class, 'create'])->name('createPaciente');
 Route::get('/pacientes/deletarPaciente/{id}', [PacientesController::class, 'destroy'])->name('deletarPaciente');
+Route::get('/pacientes/editarPaciente/{id}', [PacientesController::class, 'edit'])->name('editarPaciente');
 
