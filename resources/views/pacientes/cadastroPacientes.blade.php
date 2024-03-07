@@ -27,7 +27,7 @@
                                         <div class="input-group input-group-merge">
                                             <span id="nomePaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control" " @if(!@empty($pacientes))
+                                            <input type="text" class="form-control"  @if(!@empty($pacientes))
                 
                                             value="{{$pacientes->nomePaciente}}"@endif id="nomePaciente" name="nomePaciente"/>
                                         </div>
@@ -39,14 +39,17 @@
                                         <div class="input-group input-group-merge">
                                             <span id="dNascimentoPaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="date" class="form-control" id="dNascimentoPaciente" name="dNascimentoPaciente"/>
+                                            <input type="date" class="form-control"  @if(!@empty($pacientes))
+                
+                                            value="{{$pacientes->dNascimentoPaciente}}"@endif id="dNascimentoPaciente" name="dNascimentoPaciente"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="sexoPaciente">Sexo</label>
                                     <div class="col-sm-10">
-                                      <select name="sexoPaciente" id="sexoPaciente" class="select2 form-select" data-allow-clear="true">
+                                      <select  @if(!@empty($pacientes))
+                                      value="{{$pacientes->sexoPaciente}}"@endif name="sexoPaciente" id="sexoPaciente" class="select2 form-select" data-allow-clear="true">
                                         <option value="">Selecione</option>
                                         <option value="Masculino">Masculino</option>
                                         <option value="Feminino">Feminino</option>
@@ -59,7 +62,8 @@
                                         <div class="input-group input-group-merge">
                                             <span id="cpfPaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control  cpf" id="cpfPaciente" name="cpfPaciente"/>
+                                            <input type="text" class="form-control  cpf" @if(!@empty($pacientes))
+                                            value="{{$pacientes->cpfPaciente}}"@endif  id="cpfPaciente" name="cpfPaciente"/>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +73,8 @@
                                         <div class="input-group input-group-merge">
                                             <span id="susPaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control" id="susPaciente" name="susPaciente"/>
+                                            <input type="text" class="form-control" @if(!@empty($pacientes))
+                                            value="{{$pacientes->susPaciente}}"@endif id="susPaciente" name="susPaciente"/>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +84,8 @@
                                         <div class="input-group input-group-merge">
                                             <span id="telefonePaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control telefone" id="telefonePaciente" name="telefonePaciente"/>
+                                            <input type="text" class="form-control telefone" @if(!@empty($pacientes))
+                                            value="{{$pacientes->telefonePaciente}}"@endif id="telefonePaciente" name="telefonePaciente"/>
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +95,8 @@
                                         <div class="input-group input-group-merge">
                                             <span id="enderecoPaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control" id="enderecoPaciente" name="enderecoPaciente"/>
+                                            <input type="text" class="form-control" @if(!@empty($pacientes))
+                                            value="{{$pacientes->enderecoPaciente}}"@endif id="enderecoPaciente" name="enderecoPaciente"/>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +106,8 @@
                                         <div class="input-group input-group-merge">
                                             <span id="cepPaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control cep" id="cepPaciente" name="cepPaciente"/>
+                                            <input type="text" class="form-control cep" @if(!@empty($pacientes))
+                                            value="{{$pacientes->cepPaciente}}"@endif id="cepPaciente" name="cepPaciente"/>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +117,8 @@
                                         <div class="input-group input-group-merge">
                                             <span id="maePaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control" id="maePaciente" name="maePaciente"/>
+                                            <input type="text" class="form-control" @if(!@empty($pacientes))
+                                            value="{{$pacientes->maePaciente}}"@endif id="maePaciente" name="maePaciente"/>
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +128,8 @@
                                         <div class="input-group input-group-merge">
                                             <span id="paiPaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control" id="paiPaciente" name="paiPaciente"/>
+                                            <input type="text" class="form-control" @if(!@empty($pacientes))
+                                            value="{{$pacientes->paiPaciente}}"@endif id="paiPaciente" name="paiPaciente"/>
                                         </div>
                                     </div>
                                 </div>
