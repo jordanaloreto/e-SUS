@@ -20,7 +20,7 @@
                         fill="#7367F0" />
                 </svg>
             </span>
-            <span class="app-brand-text demo menu-text fw-bold">Vuexy</span>
+            <span class="app-brand-text demo menu-text fw-bold">e-SUS</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -33,7 +33,7 @@
 
     <ul class="menu-inner py-1">
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>
+            <span class="menu-header-text" data-i18n="Apps & Pages">Cadastros Básicos</span>
         </li>
         <li class="menu-item">
             <a href="{{route('listagemPaciente')}}" class="menu-link">
@@ -42,11 +42,11 @@
             </a>
             <a href="{{route('listagemMedico')}}" class="menu-link">
                 <i class="fas fa-users"></i>
-                <div data-i18n="Email">Médicos</div>
+                <div>Médicos</div>
             </a>
             <a href="{{route('listagemPaciente')}}" class="menu-link">
                 <i class="fas fa-users"></i>
-                <div data-i18n="Email">Enfermeiras</div>
+                <div>Enfermeiras</div>
             </a>
         </li> 
     </ul>
