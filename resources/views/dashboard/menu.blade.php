@@ -37,8 +37,16 @@
         </li>
         <li class="menu-item">
             <a href="{{route('listagemPaciente')}}" class="menu-link">
-                <i class="menu-icon tf-icons ti ti-mail"></i>
-                <div data-i18n="Email">Pacientes</div>
+                <i class="fas fa-users"></i>
+                <div>Pacientes </div>
+            </a>
+            <a href="{{route('listagemMedico')}}" class="menu-link">
+                <i class="fas fa-users"></i>
+                <div data-i18n="Email">Médicos</div>
+            </a>
+            <a href="{{route('listagemPaciente')}}" class="menu-link">
+                <i class="fas fa-users"></i>
+                <div data-i18n="Email">Enfermeiras</div>
             </a>
         </li> 
     </ul>
