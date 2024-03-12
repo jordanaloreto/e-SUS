@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicosController;
+use App\Http\Controllers\EnfermeirasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,9 @@ Route::get('/medicos/deletarMedico/{id}', [MedicosController::class, 'destroy'])
 Route::get('/medicos/editarMedico/{id}', [MedicosController::class, 'edit'])->name('editarMedico');
 
 //--------------------------------------ENFERMEIRAS-------------------------------------------------------
-
+Route::get('/enfermeiras/listagemEnfermeira', [EnfermeirasController::class, 'index'])->name('listagemEnfermeira');
+Route::get('/enfermeiras/cadastroEnfermeira', [EnfermeirasController::class, 'form'])->name('cadastroEnfermeira');
+Route::post('/enfermeiras/storeEnfermeira', [EnfermeirasController::class, 'store'])->name('storeEnfermeira');
+Route::get('/enfermeiras/createEnfermeira', [EnfermeirasController::class, 'create'])->name('createEnfermeira');
+Route::get('/enfermeiras/deletarEnfermeira/{id}', [EnfermeirasController::class, 'destroy'])->name('deletarEnfermeira');
+Route::get('/enfermeiras/editarEnfermeira/{id}', [EnfermeirasController::class, 'edit'])->name('editarEnfermeira');

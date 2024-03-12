@@ -1,11 +1,11 @@
 @extends('dashboard.corpo')
 
-@section('title', 'Cadastro de Paciente')
+@section('title', 'Cadastro de Enfermeiras')
 
 @section('content')
 
     <body>
-        <form method="post" action="{{ route('storePaciente') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('storeEnfermeira') }}" enctype="multipart/form-data">
             @csrf
             <input type="hidden" class="form-control" id="id" name="id" @if(!@empty($id))
                 
@@ -17,39 +17,28 @@
                 <div class="col-xxl">
                     <div class="card mb-4">
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Cadastro Paciente</h5>
+                            <h5 class="mb-0">Cadastro Enfermeiras</h5>
                         </div>
                         <div class="card-body">
                            
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="nomePaciente">Nome</label>
+                                    <label class="col-sm-2 col-form-label" for="nomeEnfermeira">Nome</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="nomePaciente" class="input-group-text"><i
+                                            <span id="nomeEnfermeira" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control"  @if(!@empty($pacientes))
+                                            <input type="text" class="form-control"  @if(!@empty($enfermeiras))
                 
-                                            value="{{$pacientes->nomePaciente}}"@endif id="nomePaciente" name="nomePaciente"/>
+                                            value="{{$enfermeiras->nomeEnfermeira}}"@endif id="nomeEnfermeira" name="nomeEnfermeira"/>
                                         </div>
                                     </div>
                                 </div>
+                            
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="dNascimentoPaciente">Data de Nascimento</label>
+                                    <label class="col-sm-2 col-form-label" for="sexoEnfermeira">Sexo</label>
                                     <div class="col-sm-10">
-                                        <div class="input-group input-group-merge">
-                                            <span id="dNascimentoPaciente" class="input-group-text"><i
-                                                    ></i></span>
-                                            <input type="date" class="form-control"  @if(!@empty($pacientes))
-                
-                                            value="{{$pacientes->dNascimentoPaciente}}"@endif id="dNascimentoPaciente" name="dNascimentoPaciente"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="sexoPaciente">Sexo</label>
-                                    <div class="col-sm-10">
-                                      <select  @if(!@empty($pacientes))
-                                      value="{{$pacientes->sexoPaciente}}"@endif name="sexoPaciente" id="sexoPaciente" class="select2 form-select" data-allow-clear="true">
+                                      <select  @if(!@empty($enfermeiras))
+                                      value="{{$enfermeiras->sexoEnfermeira}}"@endif name="sexoEnfermeira" id="sexoEnfermeira" class="select2 form-select" data-allow-clear="true">
                                         <option value="">Selecione</option>
                                         <option value="Masculino">Masculino</option>
                                         <option value="Feminino">Feminino</option>
@@ -57,79 +46,91 @@
                                     </div>
                                   </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="cpfPaciente">CPF</label>
+                                    <label class="col-sm-2 col-form-label" for="cpfEnfermeira">CPF</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="cpfPaciente" class="input-group-text"><i
+                                            <span id="cpfEnfermeira" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control  cpf" @if(!@empty($pacientes))
-                                            value="{{$pacientes->cpfPaciente}}"@endif  id="cpfPaciente" name="cpfPaciente"/>
+                                            <input type="text" class="form-control  cpf" @if(!@empty($enfermeiras))
+                                            value="{{$enfermeiras->cpfEnfermeira}}"@endif  id="cpfEnfermeira" name="cpfEnfermeira"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="telefoneEnfermeira">Telefone</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="telefoneEnfermeira" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="text" class="form-control telefone" @if(!@empty($enfermeiras))
+                                            value="{{$enfermeiras->telefoneEnfermeira}}"@endif id="telefoneEnfermeira" name="telefoneEnfermeira"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="susPaciente">SUS</label>
+                                    <label class="col-sm-2 col-form-label" for="enderecoEnfermeira">Endereço</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="susPaciente" class="input-group-text"><i
+                                            <span id="enderecoEnfermeira" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control" @if(!@empty($pacientes))
-                                            value="{{$pacientes->susPaciente}}"@endif id="susPaciente" name="susPaciente"/>
+                                            <input type="text" class="form-control" @if(!@empty($enfermeiras))
+                                            value="{{$enfermeiras->enderecoEnfermeira}}"@endif id="enderecoEnfermeira" name="enderecoEnfermeira"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="telefonePaciente">Telefone</label>
+                                    <label class="col-sm-2 col-form-label" for="cepEnfermeira">CEP</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="telefonePaciente" class="input-group-text"><i
+                                            <span id="cepEnfermeira" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control telefone" @if(!@empty($pacientes))
-                                            value="{{$pacientes->telefonePaciente}}"@endif id="telefonePaciente" name="telefonePaciente"/>
+                                            <input type="text" class="form-control cep" @if(!@empty($enfermeiras))
+                                            value="{{$enfermeiras->cepEnfermeira}}"@endif id="cepEnfermeira" name="cepEnfermeira"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="enderecoPaciente">Endereço</label>
+                                    <label class="col-sm-2 col-form-label" for="maeEnfermeira">Nome Mãe</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="enderecoPaciente" class="input-group-text"><i
+                                            <span id="maeEnfermeira" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control" @if(!@empty($pacientes))
-                                            value="{{$pacientes->enderecoPaciente}}"@endif id="enderecoPaciente" name="enderecoPaciente"/>
+                                            <input type="text" class="form-control" @if(!@empty($enfermeiras))
+                                            value="{{$enfermeiras->maeEnfermeira}}"@endif id="maeEnfermeira" name="maeEnfermeira"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="cepPaciente">CEP</label>
+                                    <label class="col-sm-2 col-form-label" for="paiEnfermeira">Nome Pai</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="cepPaciente" class="input-group-text"><i
+                                            <span id="paiEnfermeira" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control cep" @if(!@empty($pacientes))
-                                            value="{{$pacientes->cepPaciente}}"@endif id="cepPaciente" name="cepPaciente"/>
+                                            <input type="text" class="form-control" @if(!@empty($enfermeiras))
+                                            value="{{$enfermeiras->paiEnfermeira}}"@endif id="paiEnfermeira" name="paiEnfermeira"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="maePaciente">Nome Mãe</label>
+                                    <label class="col-sm-2 col-form-label" for="corem">COREM/UF</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="maePaciente" class="input-group-text"><i
+                                            <span id="corem" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control" @if(!@empty($pacientes))
-                                            value="{{$pacientes->maePaciente}}"@endif id="maePaciente" name="maePaciente"/>
+                                            <input type="text" class="form-control" @if(!@empty($enfermeiras))
+                                            value="{{$enfermeiras->corem}}"@endif id="corem" name="corem"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="paiPaciente">Nome Pai</label>
+                                    <label class="col-sm-2 col-form-label" for="dnEnfermeira">dnEnfermeira</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="paiPaciente" class="input-group-text"><i
+                                            <span id="dnEnfermeira" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control" @if(!@empty($pacientes))
-                                            value="{{$pacientes->paiPaciente}}"@endif id="paiPaciente" name="paiPaciente"/>
+                                            <input type="text" class="form-control" @if(!@empty($enfermeiras))
+                                            value="{{$enfermeiras->dnEnfermeira}}"@endif id="dnEnfermeira" name="dnEnfermeira"/>
                                         </div>
                                     </div>
                                 </div>
