@@ -119,6 +119,6 @@ class EnfermeirasController extends Controller
     {
         Enfermeiras::findOrFail($id)->delete();
 
-        return redirect()->route('listagemEnfermeiras')->with('msg', 'Enfermeira excluída com sucesso!');
+        return redirect()->route('listagemEnfermeira')->with('msg', 'Enfermeira excluída com sucesso!');
     }
 }

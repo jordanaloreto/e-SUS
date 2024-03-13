@@ -44,7 +44,7 @@
                 <i class="fas fa-users"></i>
                 <div>Médicos</div>
             </a>
-            <a href="{{route('listagemPaciente')}}" class="menu-link">
+            <a href="{{route('listagemEnfermeira')}}" class="menu-link">
                 <i class="fas fa-users"></i>
                 <div>Enfermeiras</div>
             </a>

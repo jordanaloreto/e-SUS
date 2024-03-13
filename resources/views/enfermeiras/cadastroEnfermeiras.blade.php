@@ -124,7 +124,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="dnEnfermeira">dnEnfermeira</label>
+                                    <label class="col-sm-2 col-form-label" for="dnEnfermeira">DN</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
                                             <span id="dnEnfermeira" class="input-group-text"><i
