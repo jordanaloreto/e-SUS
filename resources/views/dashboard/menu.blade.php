@@ -48,7 +48,27 @@
                 <i class="fas fa-users"></i>
                 <div>Enfermeiras</div>
             </a>
-        </li> 
+        </li>
+        <ul class="menu-inner py-1">
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text" data-i18n="Apps & Pages">Processos</span>
+            </li>
+            <li class="menu-item">
+                <a href="{{route('listagemPaciente')}}" class="menu-link">
+                    <i class="fas fa-users"></i>
+                    <div>Escuta Inicial </div>
+                </a>
+                <a href="{{route('listagemMedico')}}" class="menu-link">
+                    <i class="fas fa-users"></i>
+                    <div>Consulta</div>
+                </a>
+                <a href="{{route('listagemMedico')}}" class="menu-link">
+                    <i class="fas fa-users"></i>
+                    <div>Prontuários</div>
+                </a>
+            </li> 
+        </ul> 
     </ul>
+    
 </aside>
 <!-- / Menu -->
