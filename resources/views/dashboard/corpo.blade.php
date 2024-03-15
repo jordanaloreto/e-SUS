@@ -69,8 +69,8 @@
     <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
     <script src="/assets/vendor/js/template-customizer.js"></script>
     <script src="https://cdn.datatables.net/2.0.1/js/dataTables.min.js"></script>
-    <link rel="stylesheet" href="//cdn.datatables.net/2.0.1/css/dataTables.dataTables.min.css"/>
-    
+    <link rel="stylesheet" href="//cdn.datatables.net/2.0.1/css/dataTables.dataTables.min.css" />
+
 
 
 </head>
@@ -108,7 +108,7 @@
                 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
                     id="layout-navbar">
 
-                 
+
 
 
 
@@ -203,7 +203,7 @@
                                     data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                     <i class='ti ti-layout-grid-add ti-md'></i>
                                 </a>
-                                
+
                             </li>
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -342,7 +342,7 @@
         <!-- Core JS -->
         <!-- build:js assets/vendor/js/core.js -->
 
-      
+
         <script src="/assets/vendor/libs/popper/popper.js"></script>
         <script src="/assets/vendor/js/bootstrap.js"></script>
         <script src="/assets/vendor/libs/node-waves/node-waves.js"></script>
@@ -369,15 +369,31 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
         <script>
-            $('.cpf').mask('###.###.###-##', {
-                reverse: false
-            });
-            $('.telefone').mask('(##) # ####-####', {
-                reverse: false
-            });
-            $('.cep').mask('##.###-###', {
-                reverse: false
-            });
+            $(document).ready(function() {
+                        function applyMaskAndLimitLength(selector, mask, maxLength) {
+                            $(selector).mask(mask, {
+                                reverse: true
+                            }).on('input', function() {
+                                if ($(this).val().length > maxLength) {
+                                    $(this).val($(this).val().slice(0, maxLength));
+                                }
+                            });
+                        }
+
+                        $('.cpf').mask('###.###.###-##', {
+                            reverse: false
+                        });
+                        $('.telefone').mask('(##) # ####-####', {
+                            reverse: false
+                        });
+                        $('.cep').mask('##.###-###', {
+                            reverse: false
+                        });
+
+                        applyMaskAndLimitLength('.peso', '###.##', 6); // Permitindo até 6 caracteres
+
+                        applyMaskAndLimitLength('.altura', '##0.00', 5); // Permitindo até 5 caracteres
+
         </script>
 
 </body>

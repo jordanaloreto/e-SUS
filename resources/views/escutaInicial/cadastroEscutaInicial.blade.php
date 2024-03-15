@@ -72,7 +72,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
                                         <span id="altura" class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control telefone"
+                                        <input type="text" class="form-control"
                                             @if (!@empty($escutaInicial)) value="{{ $escutaInicial->altura }}" @endif
                                             id="altura" name="altura" />
                                     </div>
@@ -94,7 +94,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
                                         <span id="fr" class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control cep"
+                                        <input type="text" class="form-control"
                                             @if (!@empty($escutaInicial)) value="{{ $escutaInicial->fr }}" @endif
                                             id="fr" name="fr" />
                                     </div>
