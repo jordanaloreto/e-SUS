@@ -48,7 +48,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
                                         <span id="peso" class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control peso"
                                             @if (!@empty($escutaInicial)) value="{{ $escutaInicial->peso }}" @endif
                                             id="peso" name="peso" />
                                     </div>

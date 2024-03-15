@@ -62,7 +62,7 @@
                                         <div class="input-group input-group-merge">
                                             <span id="cpfPaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control  cpf" @if(!@empty($pacientes))
+                                            <input type="text" class="form-control  cpf" maxlength="14" @if(!@empty($pacientes))
                                             value="{{$pacientes->cpfPaciente}}"@endif  id="cpfPaciente" name="cpfPaciente"/>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@
                                         <div class="input-group input-group-merge">
                                             <span id="telefonePaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control telefone" @if(!@empty($pacientes))
+                                            <input type="text" class="form-control telefone"maxlength="16" @if(!@empty($pacientes))
                                             value="{{$pacientes->telefonePaciente}}"@endif id="telefonePaciente" name="telefonePaciente"/>
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                                         <div class="input-group input-group-merge">
                                             <span id="cepPaciente" class="input-group-text"><i
                                                     ></i></span>
-                                            <input type="text" class="form-control cep" @if(!@empty($pacientes))
+                                            <input type="text" class="form-control cep" maxlength="10" @if(!@empty($pacientes))
                                             value="{{$pacientes->cepPaciente}}"@endif id="cepPaciente" name="cepPaciente"/>
                                         </div>
                                     </div>

@@ -369,16 +369,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
         <script>
-            $(document).ready(function() {
-                        function applyMaskAndLimitLength(selector, mask, maxLength) {
-                            $(selector).mask(mask, {
-                                reverse: true
-                            }).on('input', function() {
-                                if ($(this).val().length > maxLength) {
-                                    $(this).val($(this).val().slice(0, maxLength));
-                                }
-                            });
-                        }
 
                         $('.cpf').mask('###.###.###-##', {
                             reverse: false
@@ -389,10 +379,6 @@
                         $('.cep').mask('##.###-###', {
                             reverse: false
                         });
-
-                        applyMaskAndLimitLength('.peso', '###.##', 6); // Permitindo até 6 caracteres
-
-                        applyMaskAndLimitLength('.altura', '##0.00', 5); // Permitindo até 5 caracteres
 
         </script>
 
