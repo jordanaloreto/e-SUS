@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EscutaInicial;
+use App\Models\Medicos;
+use App\Models\Pacientes;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
+
 
 class EscutaInicialController extends Controller
 {
@@ -13,8 +18,20 @@ class EscutaInicialController extends Controller
      */
     public function index()
     {
-        //
+        // $escutaInicial = EscutaInicial::all();
+        $pacientes = Pacientes::all();
+
+        return view('escutaInicial.listagemPacienteEscuta');
     }
+
+    public function form()
+    {
+        $pacientes = Pacientes::all();
+        $medicos = Medicos::all();
+        
+        return view('escutaInicial.cadastroEscutaInicial', compact('pacientes', 'medicos'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +40,11 @@ class EscutaInicialController extends Controller
      */
     public function create()
     {
-        //
+        $pacientes = Pacientes::select(['id', 'nomePaciente', 'cpfPaciente']);
+    
+        return DataTables::of($pacientes)
+            ->rawColumns(['nomePaciente', 'cpfPaciente'])
+            ->make(true);
     }
 
     /**
@@ -34,7 +55,24 @@ class EscutaInicialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(!empty($request->id)){
+            $escutaInicial = EscutaInicial::findOrFail($request->id);
+        }else{
+            $escutaInicial = new EscutaInicial();
+        }
+        $escutaInicial->pacienteSelecionado = $request->pacienteSelecionado;
+        $escutaInicial->medicoSelecionado = $request->medicoSelecionado;
+        $escutaInicial->peso = $request->peso;
+        $escutaInicial->glicemia = $request->glicemia;
+        $escutaInicial->altura = $request->altura;
+        $escutaInicial->fc = $request->fc;
+        $escutaInicial->fr = $request->fr;
+        $escutaInicial->problema = $request->problema;
+        $escutaInicial->risco = $request->risco;
+
+        $escutaInicial->save();
+
+        return back();
     }
 
     /**
@@ -56,7 +94,9 @@ class EscutaInicialController extends Controller
      */
     public function edit($id)
     {
-        //
+        $escutaInicial = Pacientes::findOrFail($id);
+        return view('escutaInicial.cadastroEscutaInicial')->with('msg', 'Paciente Editado!')
+        ->with('id', $id)->with('escutaInicial', $escutaInicial);
     }
 
     /**
@@ -79,6 +119,8 @@ class EscutaInicialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        EscutaInicial::findOrFail($id)->delete();
+
+        return redirect()->route('listagemPacienteEscuta')->with('msg', 'Paciente excluído com sucesso!');
     }
 }

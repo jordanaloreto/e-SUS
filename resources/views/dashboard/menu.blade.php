@@ -54,7 +54,7 @@
                 <span class="menu-header-text" data-i18n="Apps & Pages">Processos</span>
             </li>
             <li class="menu-item">
-                <a href="{{route('listagemPaciente')}}" class="menu-link">
+                <a href="{{route('listagemPacienteEscuta')}}" class="menu-link">
                     <i class="fas fa-users"></i>
                     <div>Escuta Inicial </div>
                 </a>

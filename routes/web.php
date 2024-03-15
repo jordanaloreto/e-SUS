@@ -5,6 +5,7 @@ use App\Http\Controllers\PacientesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicosController;
 use App\Http\Controllers\EnfermeirasController;
+use App\Http\Controllers\EscutaInicialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,12 @@ Route::post('/enfermeiras/storeEnfermeira', [EnfermeirasController::class, 'stor
 Route::get('/enfermeiras/createEnfermeira', [EnfermeirasController::class, 'create'])->name('createEnfermeira');
 Route::get('/enfermeiras/deletarEnfermeira/{id}', [EnfermeirasController::class, 'destroy'])->name('deletarEnfermeira');
 Route::get('/enfermeiras/editarEnfermeira/{id}', [EnfermeirasController::class, 'edit'])->name('editarEnfermeira');
+
+//-----------------------------------ESCUTA INICIAL--------------------------------------------------------
+Route::get('/escutaInicial/listagemPacienteEscuta', [EscutaInicialController::class, 'index'])->name('listagemPacienteEscuta');
+Route::get('/escutaInicial/cadastroEscutaInicial', [EscutaInicialController::class, 'form'])->name('cadastroEscutaInicial');
+Route::post('/escutaInicial/storeEscutaInicial', [EscutaInicialController::class, 'store'])->name('storeEscutaInicial');
+Route::get('/escutaInicial/createEscutaInicial', [EscutaInicialController::class, 'create'])->name('createEscutaInicial');
+Route::get('/escutaInicial/deletarEscutaInicial/{id}', [EscutaInicialController::class, 'destroy'])->name('deletarEscutaInicial');
+Route::get('/escutaInicial/editarEscutaInicial/{id}', [EscutaInicialController::class, 'edit'])->name('editarEscutaInicial');
+
