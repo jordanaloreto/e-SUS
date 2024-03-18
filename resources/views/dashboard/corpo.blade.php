@@ -369,17 +369,21 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
         <script>
-
-                        $('.cpf').mask('###.###.###-##', {
-                            reverse: false
-                        });
-                        $('.telefone').mask('(##) # ####-####', {
-                            reverse: false
-                        });
-                        $('.cep').mask('##.###-###', {
-                            reverse: false
-                        });
-
+            $('.cpf').mask('###.###.###-##', {
+                reverse: false
+            });
+            $('.telefone').mask('(##) # ####-####', {
+                reverse: false
+            });
+            $('.cep').mask('##.###-###', {
+                reverse: false
+            });
+            $('.altura').mask('0.00', {
+                reverse: true
+            });
+            $('.peso').mask('000.00', {
+                reverse: true
+            });
         </script>
 
 </body>
