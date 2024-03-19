@@ -1,6 +1,6 @@
 @extends('dashboard.corpo')
 
-@section('title', 'Pacientes')
+@section('title', 'Prontuario')
 
 @section('content')
 
