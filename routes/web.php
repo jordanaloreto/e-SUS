@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MedicosController;
 use App\Http\Controllers\EnfermeirasController;
 use App\Http\Controllers\EscutaInicialController;
+use App\Http\Controllers\ProntuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,4 +61,12 @@ Route::post('/escutaInicial/storeEscutaInicial', [EscutaInicialController::class
 Route::get('/escutaInicial/createEscutaInicial', [EscutaInicialController::class, 'create'])->name('createEscutaInicial');
 Route::get('/escutaInicial/deletarEscutaInicial/{id}', [EscutaInicialController::class, 'destroy'])->name('deletarEscutaInicial');
 Route::get('/escutaInicial/editarEscutaInicial/{id}', [EscutaInicialController::class, 'edit'])->name('editarEscutaInicial');
+
+//-----------------------------------CONSULTA(GERA O PRONTUARIO)--------------------------------------------------------
+Route::get('/consulta/listagemEscutaInicial', [ProntuarioController::class, 'index'])->name('listagemEscutaInicial');
+Route::get('/consulta/cadastroProntuario', [ProntuarioController::class, 'form'])->name('cadastroProntuario');
+Route::post('/consulta/storeProntuario', [ProntuarioController::class, 'store'])->name('storeProntuario');
+Route::get('/consulta/createProntuario', [ProntuarioController::class, 'create'])->name('createProntuario');
+Route::get('/consulta/deletarProntuario/{id}', [ProntuarioController::class, 'destroy'])->name('deletarProntuario');
+Route::get('/consulta/editarProntuario/{id}', [ProntuarioController::class, 'edit'])->name('editarProntuario');
 
