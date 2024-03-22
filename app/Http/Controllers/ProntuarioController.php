@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enfermeiras;
 use Illuminate\Http\Request;
+use App\Models\Pacientes;
+use App\Models\EscutaInicial;
+use App\Models\Medicos;
+use App\Models\Prontuario;
+use Yajra\DataTables\DataTables;
+
 
 class ProntuarioController extends Controller
 {
@@ -13,7 +20,20 @@ class ProntuarioController extends Controller
      */
     public function index()
     {
-        //
+        $escutaInicial = EscutaInicial::all();
+        // $pacientes = Pacientes::all();
+
+        return view('consulta.listagemEscutaInicial');
+    }
+
+    public function form()
+    {
+        $pacientes = Pacientes::all();
+        $medicos = Medicos::all();
+        $enfermeiras = Enfermeiras::all();
+        $escutaInicial = EscutaInicial::all();
+        
+        return view('consulta.cadastroProntuario', compact('pacientes', 'medicos', 'enfermeiras', 'escutaInicial'));
     }
 
     /**
@@ -23,7 +43,11 @@ class ProntuarioController extends Controller
      */
     public function create()
     {
-        //
+        $escutaInicial = EscutaInicial::select(['id', 'pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado']);
+    
+        return DataTables::of($escutaInicial)
+            ->rawColumns(['pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado']) 
+            ->make(true);
     }
 
     /**
@@ -34,7 +58,26 @@ class ProntuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(!empty($request->id)){
+            $prontuario = Prontuario::findOrFail($request->id);
+        }else{
+            $prontuario = new Prontuario();
+        }
+        $prontuario->pacienteSelecionado = $request->pacienteSelecionado;
+        $prontuario->medicoSelecionado = $request->medicoSelecionado;
+        $prontuario->enfermeiraSelecionado = $request->enfermeiraSelecionado;
+        $prontuario->diagnostico = $request->diagnostico;
+        $prontuario->remedios = $request->remedios;
+        $prontuario->tratamento = $request->tratamento;
+        $prontuario->historia = $request->historia;
+        $prontuario->antecedentes = $request->antecedentes;
+        $prontuario->exameFisico = $request->exameFisico;
+        $prontuario->localExames = $request->localExames;
+        $prontuario->exames = $request->exames;
+
+        $prontuario->save();
+
+        return back();
     }
 
     /**

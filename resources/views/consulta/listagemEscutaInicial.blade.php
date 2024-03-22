@@ -7,7 +7,7 @@
     <br>
     <div class="container">
         <div class="text-end">
-            <a type="button" class="btn btn-primary" href="{{route('cadastroProntuario')}}">Gerar Escuta Inicial</a>
+            <a type="button" class="btn btn-primary" href="{{route('cadastroProntuario')}}">Gerar Prontuário</a>
         </div>
         <br>
         <div class="row">
@@ -16,8 +16,9 @@
                     <table id="escutaInicial_table" class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Nome</th>
-                                <th>CPF</th>
+                                <th>Paciente</th>
+                                <th>Médico</th>
+                                <th>Enfermeira</th>
                             </tr>
                         </thead>
                     </table>
@@ -32,10 +33,11 @@
             $('#escutaInicial_table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('createEscutaInicial') }}",
+                ajax: "{{ route('createProntuario') }}",
                 columns: [
-                    { data: 'nomePaciente', name: 'nomePaciente' },
-                    { data: 'cpfPaciente', name: 'cpfPaciente' },
+                    { data: 'pacienteSelecionado', name: 'pacienteSelecionado' },
+                    { data: 'medicoSelecionado', name: 'medicoSelecionado' },
+                    { data: 'enfermeiraSelecionado', name: 'enfermeiraSelecionado' },
                 ]
             });
         });

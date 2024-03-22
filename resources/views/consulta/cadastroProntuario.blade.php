@@ -5,7 +5,7 @@
 @section('content')
 
     <body>
-        <form method="post" action="{{ route('storeEscutaInicial') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('storeProntuario') }}" enctype="multipart/form-data">
             @csrf
             <input type="hidden" class="form-control" id="id" name="id"
                 @if (!@empty($id)) value="{{ $id }}" @endif />
@@ -16,7 +16,7 @@
                 <div class="col-xxl">
                     <div class="card mb-4">
                         <div class="card-header d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Cadastro Escuta Inicial</h5>
+                            <h5 class="mb-0">Cadastro Prontuário</h5>
                         </div>
                         <div class="card-body">
 
@@ -42,83 +42,105 @@
                                 </div>
                             </div>
 
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="enfermeiraSelecionado">Enfermeira</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" id="enfermeiraSelecionado" name="enfermeiraSelecionado">
+                                        @foreach ($enfermeiras as $enfermeira)
+                                            <option value="{{ $enfermeira->id }}">{{ $enfermeira->nomeEnfermeira }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
 
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="peso">Peso</label>
+                                <label class="col-sm-2 col-form-label" for="diagnostico">Diagnóstico</label>
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
-                                        <span id="peso" class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control peso" maxlength="6"
-                                            @if (!@empty($escutaInicial)) value="{{ $escutaInicial->peso }}" @endif
-                                            id="peso" name="peso" />
+                                        <span id="diagnostico" class="input-group-text"><i></i></span>
+                                        <input type="text" class="form-control diagnostico" maxlength="6"
+                                            @if (!@empty($prontuario)) value="{{ $prontuario->diagnostico }}" @endif
+                                            id="diagnostico" name="diagnostico" />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="glicemia">Glicemia</label>
+                                <label class="col-sm-2 col-form-label" for="remedios">Remédios em Uso</label>
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
-                                        <span id="glicemia" class="input-group-text"><i></i></span>
+                                        <span id="remedios" class="input-group-text"><i></i></span>
                                         <input type="text" class="form-control  cpf"
-                                            @if (!@empty($escutaInicial)) value="{{ $escutaInicial->glicemia }}" @endif
-                                            id="glicemia" name="glicemia" />
+                                            @if (!@empty($prontuario)) value="{{ $prontuario->remedios }}" @endif
+                                            id="remedios" name="remedios" />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="altura">Altura</label>
+                                <label class="col-sm-2 col-form-label" for="tratamento">Tratamento</label>
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
-                                        <span id="altura" class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control altura" maxlength="4"
-                                            @if (!@empty($escutaInicial)) value="{{ $escutaInicial->altura }}" @endif
-                                            id="altura" name="altura" />
+                                        <span id="tratamento" class="input-group-text"><i></i></span>
+                                        <input type="text" class="form-control tratamento" maxlength="4"
+                                            @if (!@empty($prontuario)) value="{{ $prontuario->tratamento }}" @endif
+                                            id="tratamento" name="tratamento" />
                                     </div>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="fc">FC</label>
+                                <label class="col-sm-2 col-form-label" for="historia">História Progressa</label>
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
-                                        <span id="fc" class="input-group-text"><i></i></span>
+                                        <span id="historia" class="input-group-text"><i></i></span>
                                         <input type="text" class="form-control"
-                                            @if (!@empty($escutaInicial)) value="{{ $escutaInicial->fc }}" @endif
-                                            id="fc" name="fc" />
+                                            @if (!@empty($prontuario)) value="{{ $prontuario->historia }}" @endif
+                                            id="historia" name="historia" />
                                     </div>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="fr">FR</label>
+                                <label class="col-sm-2 col-form-label" for="antecedentes">Antecedentes</label>
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
-                                        <span id="fr" class="input-group-text"><i></i></span>
+                                        <span id="antecedentes" class="input-group-text"><i></i></span>
                                         <input type="text" class="form-control"
-                                            @if (!@empty($escutaInicial)) value="{{ $escutaInicial->fr }}" @endif
-                                            id="fr" name="fr" />
+                                            @if (!@empty($prontuario)) value="{{ $prontuario->antecedentes }}" @endif
+                                            id="antecedentes" name="antecedentes" />
                                     </div>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="problema">Problema</label>
+                                <label class="col-sm-2 col-form-label" for="exameFisico">Exame Físico</label>
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
-                                        <span id="problema" class="input-group-text"><i></i></span>
+                                        <span id="exameFisico" class="input-group-text"><i></i></span>
                                         <input type="text" class="form-control"
-                                            @if (!@empty($escutaInicial)) value="{{ $escutaInicial->problema }}" @endif
-                                            id="problema" name="problema" />
+                                            @if (!@empty($prontuario)) value="{{ $prontuario->exameFisico }}" @endif
+                                            id="exameFisico" name="exameFisico" />
                                     </div>
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label" for="risco">Risco</label>
+                                <label class="col-sm-2 col-form-label" for="localExames">Local Exames</label>
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
-                                        <span id="risco" class="input-group-text"><i></i></span>
+                                        <span id="localExames" class="input-group-text"><i></i></span>
                                         <input type="text" class="form-control"
-                                            @if (!@empty($escutaInicial)) value="{{ $escutaInicial->risco }}" @endif
-                                            id="risco" name="risco" />
+                                            @if (!@empty($prontuario)) value="{{ $prontuario->localExames }}" @endif
+                                            id="localExames" name="localExames" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="exames">Exames</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-merge">
+                                        <span id="exames" class="input-group-text"><i></i></span>
+                                        <input type="text" class="form-control"
+                                            @if (!@empty($prontuario)) value="{{ $prontuario->exames }}" @endif
+                                            id="exames" name="exames" />
                                     </div>
                                 </div>
                             </div>

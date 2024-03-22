@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enfermeiras;
 use App\Models\EscutaInicial;
 use App\Models\Medicos;
 use App\Models\Pacientes;
@@ -20,6 +21,7 @@ class EscutaInicialController extends Controller
     {
         // $escutaInicial = EscutaInicial::all();
         $pacientes = Pacientes::all();
+        // $enfermeiras = Enfermeiras::all();
 
         return view('escutaInicial.listagemPacienteEscuta');
     }
@@ -28,8 +30,9 @@ class EscutaInicialController extends Controller
     {
         $pacientes = Pacientes::all();
         $medicos = Medicos::all();
+        $enfermeiras = Enfermeiras::all();
         
-        return view('escutaInicial.cadastroEscutaInicial', compact('pacientes', 'medicos'));
+        return view('escutaInicial.cadastroEscutaInicial', compact('pacientes', 'medicos', 'enfermeiras'));
     }
 
 
@@ -62,6 +65,7 @@ class EscutaInicialController extends Controller
         }
         $escutaInicial->pacienteSelecionado = $request->pacienteSelecionado;
         $escutaInicial->medicoSelecionado = $request->medicoSelecionado;
+        $escutaInicial->enfermeiraSelecionado = $request->enfermeiraSelecionado;
         $escutaInicial->peso = $request->peso;
         $escutaInicial->glicemia = $request->glicemia;
         $escutaInicial->altura = $request->altura;

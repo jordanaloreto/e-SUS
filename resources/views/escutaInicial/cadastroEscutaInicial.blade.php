@@ -42,6 +42,17 @@
                                 </div>
                             </div>
 
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="enfermeiraSelecionado">Enfermeira</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" id="enfermeiraSelecionado" name="enfermeiraSelecionado">
+                                        @foreach ($enfermeiras as $enfermeira)
+                                            <option value="{{ $enfermeira->id }}">{{ $enfermeira->nomeEnfermeira }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
 
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="peso">Peso</label>
