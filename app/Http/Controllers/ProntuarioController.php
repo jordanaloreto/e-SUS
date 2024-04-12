@@ -21,9 +21,13 @@ class ProntuarioController extends Controller
     public function index()
     {
         $escutaInicial = EscutaInicial::all();
-        // $pacientes = Pacientes::all();
-
-        return view('consulta.listagemEscutaInicial');
+        foreach($escutaInicial as $escuta){
+            $escuta->pacienteSelecionado = Pacientes::find($escuta->pacienteSelecionado)->nomePaciente;
+            $escuta->medicoSelecionado = Medicos::find($escuta->medicoSelecionado)->nomeMedico;
+            $escuta->enfermeiraSelecionado = Enfermeiras::find($escuta->enfermeiraSelecionado)->nomeEnfermeira;
+        }
+        
+        return view('consulta.listagemEscutaInicial', compact('escutaInicial'));
     }
 
     public function form()
@@ -42,13 +46,24 @@ class ProntuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $escutaInicial = EscutaInicial::select(['id', 'pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado']);
-    
-        return DataTables::of($escutaInicial)
-            ->rawColumns(['pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado']) 
-            ->make(true);
-    }
+{
+    // Executa a consulta e obtém os resultados
+    $escutaInicial = EscutaInicial::select(['id', 'pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado'])->get();
+
+    // Cria um novo array para armazenar os resultados modificados
+    $escutas = $escutaInicial->map(function ($escuta) {
+        // Substitui os IDs pelos nomes, verificando se o resultado do find não é null
+        $escuta->pacienteSelecionado = Pacientes::find($escuta->pacienteSelecionado)->nomePaciente ?? 'Nome não encontrado';
+        $escuta->medicoSelecionado = Medicos::find($escuta->medicoSelecionado)->nomeMedico ?? 'Nome não encontrado';
+        $escuta->enfermeiraSelecionado = Enfermeiras::find($escuta->enfermeiraSelecionado)->nomeEnfermeira ?? 'Nome não encontrado';
+        return $escuta;
+    });
+
+    // Retorna os dados para DataTables
+    return DataTables::of($escutas)
+        ->rawColumns(['pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado'])
+        ->make(true);
+}
 
     /**
      * Store a newly created resource in storage.

@@ -25,8 +25,8 @@
                                 <div class="col-sm-10">
                                     <select class="form-select" id="pacienteSelecionado" name="pacienteSelecionado">
                                         @foreach ($pacientes as $paciente)
-    <option value="{{ $paciente->id }}">{{ $paciente->nomePaciente }}</option>
-@endforeach
+                                            <option value="{{ $paciente->id }}">{{ $paciente->nomePaciente }}</option>
+                                        @endforeach
 
                                     </select>
                                 </div>
@@ -37,9 +37,9 @@
                                 <div class="col-sm-10">
                                     <select class="form-select" id="medicoSelecionado" name="medicoSelecionado">
                                         @foreach ($medicos as $medico)
-                                        <option value="{{ $medico->id }}">{{ $medico->nomeMedico }}</option>
-                                    @endforeach
-                                    
+                                            <option value="{{ $medico->id }}">{{ $medico->nomeMedico }}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
@@ -49,9 +49,9 @@
                                 <div class="col-sm-10">
                                     <select class="form-select" id="enfermeiraSelecionado" name="enfermeiraSelecionado">
                                         @foreach ($enfermeiras as $enfermeira)
-                                        <option value="{{ $enfermeira->id }}">{{ $enfermeira->nomeEnfermeira }}</option>
-                                    @endforeach
-                                    
+                                            <option value="{{ $enfermeira->id }}">{{ $enfermeira->nomeEnfermeira }}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
                             </div>
