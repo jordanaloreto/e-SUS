@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Auth;   
 
 use Illuminate\Http\Request;
 
@@ -24,5 +25,14 @@ class HomeController extends Controller
     public function index()
     {
         return view('dashboard.corpo');
+    }
+    public function sair()
+    {
+        Auth::logout();
+        return redirect()->Route('login');
+    }
+    public function telaInicial()
+    {
+        return redirect()->Route('login');
     }
 }

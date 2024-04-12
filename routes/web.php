@@ -29,6 +29,8 @@ use App\Http\Controllers\ProntuarioController;
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'telaInicial'])->name('telaInicial');
+Route::get('/sair', [App\Http\Controllers\HomeController::class, 'sair'])->name('sair');
 
 //--------------------------------------PACIENTES---------------------------------------------------------
 Route::get('/pacientes/listagemPaciente', [PacientesController::class, 'index'])->name('listagemPaciente');
