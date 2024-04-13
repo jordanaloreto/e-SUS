@@ -90,6 +90,12 @@ class ProntuarioController extends Controller
         ->make(true);
     }
 
+    public function show($id)
+{
+    $prontuario = Prontuario::findOrFail($id);
+    return view('prontuario.visualizarProntuario', compact('prontuario'));
+}
+
     /**
      * Store a newly created resource in storage.
      *
@@ -126,10 +132,7 @@ class ProntuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+ 
 
     /**
      * Show the form for editing the specified resource.

@@ -75,6 +75,6 @@ Route::get('/consulta/editarProntuario/{id}', [ProntuarioController::class, 'edi
 //-----------------------------------PRONTUÁRIO(HISTÓRICO DE PRONTUARIOS, SÓ LISTAGEM E VISUALIZAÇÃO DESTE)--------------------------------------------------------
 Route::get('/prontuario/listagemProntuario', [ProntuarioController::class, 'indexProntuario'])->name('listagemProntuario');
 Route::get('/prontuario/listarHistorico', [ProntuarioController::class, 'listarHistorico'])->name('listarHistorico');
-Route::get('/prontuario/visualizarProntuario{id}', [ProntuarioController::class, 'show'])->name('visualizarProntuario');
+Route::get('/prontuario/visualizarProntuario/{id}', [ProntuarioController::class, 'show'])->name('visualizarProntuario');
 
 

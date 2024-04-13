@@ -6,10 +6,6 @@
 
     <br>
     <div class="container">
-        {{-- <div class="text-end">
-            <a type="button" class="btn btn-primary" href="{{route('cadastroProntuario')}}">Gerar Prontuário</a>
-        </div> --}}
-        {{-- <br> --}}
         <div class="row">
             <div class="card" style="max-height: 400px; overflow-y: auto;">
                 <div class="table-responsive text-nowrap">
@@ -19,7 +15,7 @@
                                 <th>Paciente</th>
                                 <th>Médico</th>
                                 <th>Enfermeira</th>
-                                {{-- <th>Data de Criação</th> --}}
+                                <th>Ações</th> <!-- Nova coluna para as ações -->
                             </tr>
                         </thead>
                     </table>
@@ -39,15 +35,18 @@
                     { data: 'pacienteSelecionado', name: 'pacienteSelecionado' },
                     { data: 'medicoSelecionado', name: 'medicoSelecionado' },
                     { data: 'enfermeiraSelecionado', name: 'enfermeiraSelecionado' },
+                    {
+                        data: null,
+                        searchable: false,
+                        orderable: false,
+                        render: function(data, type, row) {
+                            return '<a href="/prontuario/visualizarProntuario/' + data.id + '" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> Visualizar</a>';
+                        }
+                    }
                 ]
             });
         });
 
     </script>
 
-
-
 @endsection
-
-
-
