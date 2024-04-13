@@ -71,7 +71,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
                                         <span id="remedios" class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control  cpf"
+                                        <input type="text" class="form-control"
                                             @if (!@empty($prontuario)) value="{{ $prontuario->remedios }}" @endif
                                             id="remedios" name="remedios" />
                                     </div>

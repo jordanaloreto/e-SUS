@@ -62,7 +62,7 @@
                     <i class="fas fa-users"></i>
                     <div>Consulta</div>
                 </a>
-                <a href="{{route('listagemMedico')}}" class="menu-link">
+                <a href="{{route('listagemProntuario')}}" class="menu-link">
                     <i class="fas fa-users"></i>
                     <div>Prontuários</div>
                 </a>

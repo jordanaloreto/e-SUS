@@ -46,7 +46,7 @@ class ProntuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-{
+    {
     // Executa a consulta e obtém os resultados
     $escutaInicial = EscutaInicial::select(['id', 'pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado'])->get();
 
@@ -63,7 +63,32 @@ class ProntuarioController extends Controller
     return DataTables::of($escutas)
         ->rawColumns(['pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado'])
         ->make(true);
-}
+    }
+
+    public function indexProntuario()
+    {
+        return view('prontuario.listagemProntuario');
+    }
+
+    public function listarHistorico()
+    {
+    // Executa a consulta e obtém os resultados
+    $prontuario = Prontuario::select(['id', 'pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado'])->get();
+
+    // Cria um novo array para armazenar os resultados modificados
+    $prontuarios = $prontuario->map(function ($prontuario) {
+        // Substitui os IDs pelos nomes, verificando se o resultado do find não é null
+        $prontuario->pacienteSelecionado = Pacientes::find($prontuario->pacienteSelecionado)->nomePaciente ?? 'Nome não encontrado';
+        $prontuario->medicoSelecionado = Medicos::find($prontuario->medicoSelecionado)->nomeMedico ?? 'Nome não encontrado';
+        $prontuario->enfermeiraSelecionado = Enfermeiras::find($prontuario->enfermeiraSelecionado)->nomeEnfermeira ?? 'Nome não encontrado';
+        return $prontuario;
+    });
+
+    // Retorna os dados para DataTables
+    return DataTables::of($prontuarios)
+        ->rawColumns(['pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado'])
+        ->make(true);
+    }
 
     /**
      * Store a newly created resource in storage.
