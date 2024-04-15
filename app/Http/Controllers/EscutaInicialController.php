@@ -7,6 +7,7 @@ use App\Models\EscutaInicial;
 use App\Models\Medicos;
 use App\Models\Pacientes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 
 
@@ -22,8 +23,11 @@ class EscutaInicialController extends Controller
         // $escutaInicial = EscutaInicial::all();
         $pacientes = Pacientes::all();
         // $enfermeiras = Enfermeiras::all();
-
-        return view('escutaInicial.listagemPacienteEscuta');
+        if(Auth::user()->permissoes == 1)
+            return view('escutaInicial.listagemPacienteEscuta');
+        else{
+            return view('dashboard.corpo');
+        }
     }
 
     public function form()

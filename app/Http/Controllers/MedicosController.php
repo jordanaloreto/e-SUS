@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Medicos;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
+
 
 class MedicosController extends Controller
 {
@@ -16,7 +18,11 @@ class MedicosController extends Controller
     public function index()
     {
         $medicos = Medicos::all();
-        return view('medicos.listagemMedicos');
+        if(Auth::user()->permissoes == 0)
+            return view('medicos.listagemMedicos');
+        else{
+            return view('dashboard.corpo');
+        }
     }
 
     public function form()

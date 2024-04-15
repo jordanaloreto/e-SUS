@@ -10,6 +10,7 @@ use App\Models\Medicos;
 use App\Models\Prontuario;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProntuarioController extends Controller
@@ -23,12 +24,15 @@ class ProntuarioController extends Controller
     {
         $escutaInicial = EscutaInicial::all();
         foreach($escutaInicial as $escuta){
-            $escuta->pacienteSelecionado = Pacientes::find($escuta->pacienteSelecionado)->nomePaciente;
+            $escuta->pacienteSelecionado = Pacientes::find($escuta->pacienteSelecionado);
             $escuta->medicoSelecionado = Medicos::find($escuta->medicoSelecionado)->nomeMedico;
             $escuta->enfermeiraSelecionado = Enfermeiras::find($escuta->enfermeiraSelecionado)->nomeEnfermeira;
         }
-        
-        return view('consulta.listagemEscutaInicial', compact('escutaInicial'));
+        if(Auth::user()->permissoes == 2)
+            return view('consulta.listagemEscutaInicial', compact('escutaInicial'));
+        else{
+            return view('dashboard.corpo');
+        }
     }
 
     public function form()
@@ -68,7 +72,11 @@ class ProntuarioController extends Controller
 
     public function indexProntuario()
     {
-        return view('prontuario.listagemProntuario');
+        if(Auth::user()->permissoes == 2)
+            return view('prontuario.listagemProntuario');
+        else{
+            return view('dashboard.corpo');
+        }
     }
 
     public function listarHistorico()
@@ -99,7 +107,7 @@ class ProntuarioController extends Controller
     ->join('enfermeiras', 'prontuarios.enfermeiraSelecionado', 'enfermeiras.id')
     ->select('enfermeiras.nomeEnfermeira', 'pacientes.nomePaciente', 'medicos.nomeMedico', 'prontuarios.*')
     ->where('prontuarios.id', $id)->first();
-    // var_dump($prontuario);
+    // var_dump($id);
     return view('prontuario.visualizarProntuario')->with('prontuario', $prontuario);
 }
 

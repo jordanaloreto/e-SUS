@@ -30,8 +30,9 @@
     </div>
 
     <div class="menu-inner-shadow"></div>
-
     <ul class="menu-inner py-1">
+        @if(Auth::user()->permissoes == 0)
+
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text" data-i18n="Apps & Pages">Cadastros Básicos</span>
         </li>
@@ -49,15 +50,19 @@
                 <div>Enfermeiras</div>
             </a>
         </li>
+        @endif
         <ul class="menu-inner py-1">
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text" data-i18n="Apps & Pages">Processos</span>
             </li>
             <li class="menu-item">
+            @if(Auth::user()->permissoes == 1)
                 <a href="{{route('listagemPacienteEscuta')}}" class="menu-link">
                     <i class="fas fa-users"></i>
                     <div>Escuta Inicial </div>
                 </a>
+            @endif
+            @if(Auth::user()->permissoes == 2)
                 <a href="{{route('listagemEscutaInicial')}}" class="menu-link">
                     <i class="fas fa-users"></i>
                     <div>Consulta</div>
@@ -66,6 +71,7 @@
                     <i class="fas fa-users"></i>
                     <div>Prontuários</div>
                 </a>
+            @endif
             </li> 
         </ul> 
     </ul>

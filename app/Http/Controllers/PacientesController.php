@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pacientes;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class PacientesController extends Controller
 {
@@ -16,7 +17,11 @@ class PacientesController extends Controller
     public function index()
     {
         $pacientes = Pacientes::all();
-        return view('pacientes.listagemPaciente');
+        if(Auth::user()->permissoes == 0)
+            return view('pacientes.listagemPaciente');
+        else{
+            return view('dashboard.corpo');
+        }
     }
 
     public function form()
