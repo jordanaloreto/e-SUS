@@ -128,7 +128,7 @@
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
 
-                        <!-- Search -->
+                        {{-- <!-- Search -->
                         <div class="navbar-nav align-items-center">
                             <div class="nav-item navbar-search-wrapper mb-0">
                                 <a class="nav-item nav-link search-toggler d-flex align-items-center px-0"
@@ -138,7 +138,7 @@
                                 </a>
                             </div>
                         </div>
-                        <!-- /Search -->
+                        <!-- /Search --> --}}
 
 
 
@@ -197,14 +197,14 @@
                             </li>
                             <!-- / Style Switcher-->
 
-                            <!-- Quick links  -->
+                            {{-- <!-- Quick links  -->
                             <li class="nav-item dropdown-shortcuts navbar-dropdown dropdown me-2 me-xl-0">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                     data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                     <i class='ti ti-layout-grid-add ti-md'></i>
                                 </a>
 
-                            </li>
+                            </li> --}}
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
@@ -267,12 +267,12 @@
                     </div>
 
 
-                    <!-- Search Small Screens -->
+                    {{-- <!-- Search Small Screens -->
                     <div class="navbar-search-wrapper search-input-wrapper  d-none">
                         <input type="text" class="form-control search-input container-xxl border-0"
                             placeholder="Search..." aria-label="Search...">
                         <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
-                    </div>
+                    </div> --}}
 
 
 
