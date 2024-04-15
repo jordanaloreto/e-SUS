@@ -9,6 +9,7 @@ use App\Models\EscutaInicial;
 use App\Models\Medicos;
 use App\Models\Prontuario;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 
 
 class ProntuarioController extends Controller
@@ -92,8 +93,14 @@ class ProntuarioController extends Controller
 
     public function show($id)
 {
-    $prontuario = Prontuario::findOrFail($id);
-    return view('prontuario.visualizarProntuario', compact('prontuario'));
+    $prontuario = DB::table('prontuarios')
+    ->join('pacientes', 'prontuarios.pacienteSelecionado', 'pacientes.id')
+    ->join('medicos', 'prontuarios.medicoSelecionado', 'medicos.id')
+    ->join('enfermeiras', 'prontuarios.enfermeiraSelecionado', 'enfermeiras.id')
+    ->select('enfermeiras.nomeEnfermeira', 'pacientes.nomePaciente', 'medicos.nomeMedico', 'prontuarios.*')
+    ->where('prontuarios.id', $id)->first();
+    // var_dump($prontuario);
+    return view('prontuario.visualizarProntuario')->with('prontuario', $prontuario);
 }
 
     /**

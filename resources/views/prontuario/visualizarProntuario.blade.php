@@ -13,21 +13,21 @@
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Paciente</label>
                     <div class="col-sm-10">
-                        <p>{{ $prontuario->paciente->nomePaciente }}</p>
+                        <p>{{ $prontuario->nomePaciente }}</p>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Médico</label>
                     <div class="col-sm-10">
-                        <p>{{ $prontuario->medico->nomeMedico }}</p>
+                        <p>{{ $prontuario->nomeMedico }}</p>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Enfermeira</label>
                     <div class="col-sm-10">
-                        <p>{{ $prontuario->enfermeira->nomeEnfermeira }}</p>
+                        <p>{{ $prontuario->nomeEnfermeira }}</p>
                     </div>
                 </div>
 
