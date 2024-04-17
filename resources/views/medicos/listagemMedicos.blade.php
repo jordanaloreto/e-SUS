@@ -53,6 +53,13 @@
             });
         });
 
+        setTimeout(function() {
+        document.querySelectorAll('.alert').forEach(function(element) {
+            element.style.display = 'none';
+        });
+    }, 5000); // Oculta as mensagens após 5 segundos (5000 milissegundos)
+
+
     </script>
 
 
