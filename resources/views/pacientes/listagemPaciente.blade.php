@@ -11,6 +11,17 @@
         </div>
         <br>
         <div class="row">
+            @if(Session::has('erroDelete'))
+            <div class="alert alert-danger" role="alert">
+                {{ Session::get('erroDelete') }}
+            </div>
+        @endif
+        
+        @if(Session::has('sucessoDelete'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('sucessoDelete') }}
+            </div>
+        @endif
             <div class="card" style="max-height: 400px; overflow-y: auto;">
                 <div class="table-responsive text-nowrap">
                     <table id="pacientes_table" class="table table-hover">
@@ -27,6 +38,8 @@
         </div>
     </div>
 
+  
+
 
     <script>
         $(document).ready(function() {
@@ -41,6 +54,12 @@
                 ]
             });
         });
+
+        setTimeout(function() {
+        document.querySelectorAll('.alert').forEach(function(element) {
+            element.style.display = 'none';
+        });
+    }, 5000); // Oculta as mensagens após 5 segundos (5000 milissegundos)
 
     </script>
 

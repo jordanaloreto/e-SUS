@@ -6,6 +6,8 @@ use App\Models\Enfermeiras;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 
 class EnfermeirasController extends Controller
 {
@@ -122,8 +124,14 @@ class EnfermeirasController extends Controller
      */
     public function destroy($id)
     {
+        if (enfermeiraHasEscutaInicial($id)) {
+            Session::flash('erroDelete', 'Esta enfermeira não pode ser excluída pois está associada a uma escuta inicial!');
+            return redirect()->route('listagemEnfermeira');
+        }
+    
         Enfermeiras::findOrFail($id)->delete();
-
-        return redirect()->route('listagemEnfermeira')->with('msg', 'Enfermeira excluída com sucesso!');
+    
+        Session::flash('sucessoDelete', 'Enfermeira excluída com sucesso!');
+        return redirect()->route('listagemEnfermeira');
     }
 }

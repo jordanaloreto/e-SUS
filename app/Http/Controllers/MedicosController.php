@@ -6,6 +6,8 @@ use App\Models\Medicos;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+
 
 
 class MedicosController extends Controller
@@ -124,8 +126,14 @@ class MedicosController extends Controller
      */
     public function destroy($id)
     {
-        Medicos::findOrFail($id)->delete();
+    if (medicoHasEscutaInicial($id)) {
+        Session::flash('erroDelete', 'Este médico não pode ser excluído pois está associado a uma escuta inicial!');
+        return redirect()->route('listagemMedico');
+    }
 
-        return redirect()->route('listagemMedico')->with('msg', 'Medico excluído com sucesso!');
+    Medicos::findOrFail($id)->delete();
+
+    Session::flash('sucessoDelete', 'Médico excluído com sucesso!');
+    return redirect()->route('listagemMedico');
     }
 }

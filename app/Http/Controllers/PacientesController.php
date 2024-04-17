@@ -6,6 +6,7 @@ use App\Models\Pacientes;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PacientesController extends Controller
 {
@@ -126,8 +127,14 @@ class PacientesController extends Controller
      */
     public function destroy($id)
     {
+        if (pacienteHasEscutaInicial($id)) {
+            Session::flash('erroDelete', 'Este paciente não pode ser excluído pois está associado a uma escuta inicial!');
+            return redirect()->route('listagemPaciente');
+        }
+
         Pacientes::findOrFail($id)->delete();
 
-        return redirect()->route('listagemPaciente')->with('msg', 'Paciente excluído com sucesso!');
+        Session::flash('sucessoDelete', 'Paciente excluído com sucesso!');
+        return redirect()->route('listagemPaciente');
     }
 }

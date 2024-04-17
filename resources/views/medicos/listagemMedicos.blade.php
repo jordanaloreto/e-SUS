@@ -11,6 +11,17 @@
         </div>
         <br>
         <div class="row">
+            @if(Session::has('erroDelete'))
+            <div class="alert alert-danger" role="alert">
+                {{ Session::get('erroDelete') }}
+            </div>
+        @endif
+        
+        @if(Session::has('sucessoDelete'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('sucessoDelete') }}
+            </div>
+        @endif
             <div class="card" style="max-height: 400px; overflow-y: auto;">
                 <div class="table-responsive text-nowrap">
                     <table id="medicos_table" class="table table-hover">
