@@ -75,6 +75,7 @@ class MedicosController extends Controller
         $medicos->paiMedico = $request->paiMedico;
         $medicos->crm = $request->crm;
         $medicos->dn = $request->dn;
+        $medicos->dNascimentoMedico = $request->dNascimentoMedico;
 
         $medicos->save();
 

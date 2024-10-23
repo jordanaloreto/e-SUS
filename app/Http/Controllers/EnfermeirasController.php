@@ -74,6 +74,7 @@ class EnfermeirasController extends Controller
         $enfermeiras->paiEnfermeira = $request->paiEnfermeira;
         $enfermeiras->corem = $request->corem;
         $enfermeiras->dnEnfermeira = $request->dnEnfermeira;
+        $enfermeiras->dNascimentoEnfermeira = $request->dNascimentoEnfermeira;
 
         $enfermeiras->save();
 

@@ -29,7 +29,7 @@
                                                     ></i></span>
                                             <input type="text" class="form-control"  @if(!@empty($pacientes))
                 
-                                            value="{{$pacientes->nomePaciente}}"@endif id="nomePaciente" name="nomePaciente"/>
+                                            value="{{$pacientes->nomePaciente}}"@endif id="nomePaciente" name="nomePaciente" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -41,21 +41,32 @@
                                                     ></i></span>
                                             <input type="date" class="form-control"  @if(!@empty($pacientes))
                 
-                                            value="{{$pacientes->dNascimentoPaciente}}"@endif id="dNascimentoPaciente" name="dNascimentoPaciente"/>
+                                            value="{{$pacientes->dNascimentoPaciente}}"@endif id="dNascimentoPaciente" name="dNascimentoPaciente" required/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="sexoPaciente">Sexo</label>
                                     <div class="col-sm-10">
-                                      <select  @if(!@empty($pacientes))
-                                      value="{{$pacientes->sexoPaciente}}"@endif name="sexoPaciente" id="sexoPaciente" class="select2 form-select" data-allow-clear="true">
-                                        <option value="">Selecione</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Feminino">Feminino</option>
-                                      </select>
+                                        <select name="sexoPaciente" id="sexoPaciente" class="select2 form-select" data-allow-clear="true" required>
+                                            <option value="">Selecione</option>
+                                            <option value="Masculino" @if(!@empty($pacientes) && $pacientes->sexoPaciente == 'Masculino') selected @endif>Masculino</option>
+                                            <option value="Feminino" @if(!@empty($pacientes) && $pacientes->sexoPaciente == 'Feminino') selected @endif>Feminino</option>
+                                        </select>
                                     </div>
-                                  </div>
+                                </div>
+                                
+                                  <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="telefonePaciente">Telefone</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span id="telefonePaciente" class="input-group-text"><i
+                                                    ></i></span>
+                                            <input type="text" class="form-control telefone"maxlength="16" @if(!@empty($pacientes))
+                                            value="{{$pacientes->telefonePaciente}}"@endif id="telefonePaciente" name="telefonePaciente" required/>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="cpfPaciente">CPF</label>
                                     <div class="col-sm-10">
@@ -78,17 +89,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="telefonePaciente">Telefone</label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group input-group-merge">
-                                            <span id="telefonePaciente" class="input-group-text"><i
-                                                    ></i></span>
-                                            <input type="text" class="form-control telefone"maxlength="16" @if(!@empty($pacientes))
-                                            value="{{$pacientes->telefonePaciente}}"@endif id="telefonePaciente" name="telefonePaciente"/>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="enderecoPaciente">Endereço</label>
                                     <div class="col-sm-10">
