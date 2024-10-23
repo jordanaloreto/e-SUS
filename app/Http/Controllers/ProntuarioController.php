@@ -135,6 +135,8 @@ class ProntuarioController extends Controller
         $prontuario->exameFisico = $request->exameFisico;
         $prontuario->localExames = $request->localExames;
         $prontuario->exames = $request->exames;
+        $prontuario->queixa = $request->queixa;
+        $prontuario->conduta = $request->conduta;
 
         $prontuario->save();
 

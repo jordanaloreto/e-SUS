@@ -59,7 +59,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
                                         <span id="diagnostico" class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control diagnostico" maxlength="6"
+                                        <input type="text" class="form-control diagnostico" 
                                             @if (!@empty($prontuario)) value="{{ $prontuario->diagnostico }}" @endif
                                             id="diagnostico" name="diagnostico" />
                                     </div>
@@ -83,7 +83,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
                                         <span id="tratamento" class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control tratamento" maxlength="4"
+                                        <input type="text" class="form-control tratamento" 
                                             @if (!@empty($prontuario)) value="{{ $prontuario->tratamento }}" @endif
                                             id="tratamento" name="tratamento" />
                                     </div>
@@ -141,6 +141,28 @@
                                         <input type="text" class="form-control"
                                             @if (!@empty($prontuario)) value="{{ $prontuario->exames }}" @endif
                                             id="exames" name="exames" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="queixa">Queixa Principal</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-merge">
+                                        <span id="queixa" class="input-group-text"><i></i></span>
+                                        <input type="text" class="form-control"
+                                            @if (!@empty($prontuario)) value="{{ $prontuario->queixa }}" @endif
+                                            id="queixa" name="queixa" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="conduta">Conduta</label>
+                                <div class="col-sm-10">
+                                    <div class="input-group input-group-merge">
+                                        <span id="conduta" class="input-group-text"><i></i></span>
+                                        <input type="text" class="form-control"
+                                            @if (!@empty($prontuario)) value="{{ $prontuario->conduta }}" @endif
+                                            id="conduta" name="conduta" />
                                     </div>
                                 </div>
                             </div>

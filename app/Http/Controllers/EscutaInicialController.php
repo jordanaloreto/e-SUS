@@ -77,6 +77,9 @@ class EscutaInicialController extends Controller
         $escutaInicial->fr = $request->fr;
         $escutaInicial->problema = $request->problema;
         $escutaInicial->risco = $request->risco;
+        $escutaInicial->imc = $request->imc;
+        $escutaInicial->temperatura = $request->temperatura;
+        $escutaInicial->sat = $request->sat;
 
         $escutaInicial->save();
 
