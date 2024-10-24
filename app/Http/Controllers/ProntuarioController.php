@@ -35,15 +35,19 @@ class ProntuarioController extends Controller
         }
     }
 
-    public function form()
-    {
-        $pacientes = Pacientes::all();
-        $medicos = Medicos::all();
-        $enfermeiras = Enfermeiras::all();
-        $escutaInicial = EscutaInicial::all();
-        
-        return view('consulta.cadastroProntuario', compact('pacientes', 'medicos', 'enfermeiras', 'escutaInicial'));
-    }
+    public function form($paciente_id = null, $medico_id = null, $enfermeira_id = null)
+{
+    $pacientes = Pacientes::all();
+    $medicos = Medicos::all();
+    $enfermeiras = Enfermeiras::all();
+    
+    // Busque os pacientes, médicos e enfermeiras
+    $pacienteSelecionado = Pacientes::find($paciente_id);
+    $medicoSelecionado = Medicos::find($medico_id);
+    $enfermeiraSelecionada = Enfermeiras::find($enfermeira_id);
+
+    return view('consulta.cadastroProntuario', compact('pacientes', 'medicos', 'enfermeiras', 'pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionada'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -52,23 +56,35 @@ class ProntuarioController extends Controller
      */
     public function create()
     {
-    // Executa a consulta e obtém os resultados
-    $escutaInicial = EscutaInicial::select(['id', 'pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado'])->get();
+        // Filtra apenas os escuta iniciais onde o checkbox 'consulta' está marcado (igual a 1)
+        $escutaInicial = EscutaInicial::select(['id', 'pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado', 'consulta'])
+                                    ->where('consulta', 1) // Apenas escutas com consulta marcada
+                                    ->get();
 
-    // Cria um novo array para armazenar os resultados modificados
-    $escutas = $escutaInicial->map(function ($escuta) {
-        // Substitui os IDs pelos nomes, verificando se o resultado do find não é null
-        $escuta->pacienteSelecionado = Pacientes::find($escuta->pacienteSelecionado)->nomePaciente ?? 'Nome não encontrado';
-        $escuta->medicoSelecionado = Medicos::find($escuta->medicoSelecionado)->nomeMedico ?? 'Nome não encontrado';
-        $escuta->enfermeiraSelecionado = Enfermeiras::find($escuta->enfermeiraSelecionado)->nomeEnfermeira ?? 'Nome não encontrado';
-        return $escuta;
-    });
+        // Substitui IDs pelos nomes e prepara para o DataTable
+        $escutas = $escutaInicial->map(function ($escuta) {
+            $paciente = Pacientes::find($escuta->pacienteSelecionado);
+            $medico = Medicos::find($escuta->medicoSelecionado);
+            $enfermeira = Enfermeiras::find($escuta->enfermeiraSelecionado);
+            
+            return [
+                'id' => $escuta->id,
+                'pacienteSelecionado' => $paciente ? $paciente->nomePaciente : 'Nome não encontrado',
+                'medicoSelecionado' => $medico ? $medico->nomeMedico : 'Nome não encontrado',
+                'enfermeiraSelecionado' => $enfermeira ? $enfermeira->nomeEnfermeira : 'Nome não encontrado',
+                'consulta' => $escuta->consulta
+            ];
+        });
 
-    // Retorna os dados para DataTables
-    return DataTables::of($escutas)
-        ->rawColumns(['pacienteSelecionado', 'medicoSelecionado', 'enfermeiraSelecionado'])
-        ->make(true);
+        return DataTables::of($escutas)
+            ->addColumn('action', function ($escuta) {
+                return '<a href="' . url('cadastroProntuario/' . $escuta['pacienteSelecionado'] . '/' . $escuta['medicoSelecionado'] . '/' . $escuta['enfermeiraSelecionado']) . '" class="btn btn-primary">Gerar Prontuário</a>';
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
+
+
 
     public function indexProntuario()
     {
@@ -118,30 +134,40 @@ class ProntuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        if(!empty($request->id)){
-            $prontuario = Prontuario::findOrFail($request->id);
-        }else{
-            $prontuario = new Prontuario();
-        }
-        $prontuario->pacienteSelecionado = $request->pacienteSelecionado;
-        $prontuario->medicoSelecionado = $request->medicoSelecionado;
-        $prontuario->enfermeiraSelecionado = $request->enfermeiraSelecionado;
-        $prontuario->diagnostico = $request->diagnostico;
-        $prontuario->remedios = $request->remedios;
-        $prontuario->tratamento = $request->tratamento;
-        $prontuario->historia = $request->historia;
-        $prontuario->antecedentes = $request->antecedentes;
-        $prontuario->exameFisico = $request->exameFisico;
-        $prontuario->localExames = $request->localExames;
-        $prontuario->exames = $request->exames;
-        $prontuario->queixa = $request->queixa;
-        $prontuario->conduta = $request->conduta;
-
-        $prontuario->save();
-
-        return back();
+{
+    if(!empty($request->id)){
+        $prontuario = Prontuario::findOrFail($request->id);
+    } else {
+        $prontuario = new Prontuario();
     }
+    
+    // Salvando os dados do prontuário
+    $prontuario->pacienteSelecionado = $request->pacienteSelecionado;
+    $prontuario->medicoSelecionado = $request->medicoSelecionado;
+    $prontuario->enfermeiraSelecionado = $request->enfermeiraSelecionado;
+    $prontuario->diagnostico = $request->diagnostico;
+    $prontuario->remedios = $request->remedios;
+    $prontuario->tratamento = $request->tratamento;
+    $prontuario->historia = $request->historia;
+    $prontuario->antecedentes = $request->antecedentes;
+    $prontuario->exameFisico = $request->exameFisico;
+    $prontuario->localExames = $request->localExames;
+    $prontuario->exames = $request->exames;
+    $prontuario->queixa = $request->queixa;
+    $prontuario->conduta = $request->conduta;
+
+    $prontuario->save();
+
+    // Desmarcar o checkbox consulta do paciente
+    $escutaInicial = EscutaInicial::find($request->pacienteSelecionado);
+    if ($escutaInicial) {
+        $escutaInicial->consulta = 0; // Desmarca o checkbox 'consulta'
+        $escutaInicial->save();
+    }
+
+    return back();
+}
+
 
     /**
      * Display the specified resource.

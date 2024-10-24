@@ -58,7 +58,7 @@ Route::get('/enfermeiras/editarEnfermeira/{id}', [EnfermeirasController::class, 
 
 //-----------------------------------ESCUTA INICIAL--------------------------------------------------------
 Route::get('/escutaInicial/listagemPacienteEscuta', [EscutaInicialController::class, 'index'])->name('listagemPacienteEscuta');
-Route::get('/escutaInicial/cadastroEscutaInicial', [EscutaInicialController::class, 'form'])->name('cadastroEscutaInicial');
+Route::get('/cadastroEscutaInicial/{paciente_id}', [EscutaInicialController::class, 'form'])->name('cadastroEscutaInicial');
 Route::post('/escutaInicial/storeEscutaInicial', [EscutaInicialController::class, 'store'])->name('storeEscutaInicial');
 Route::get('/escutaInicial/createEscutaInicial', [EscutaInicialController::class, 'create'])->name('createEscutaInicial');
 Route::get('/escutaInicial/deletarEscutaInicial/{id}', [EscutaInicialController::class, 'destroy'])->name('deletarEscutaInicial');
@@ -66,7 +66,7 @@ Route::get('/escutaInicial/editarEscutaInicial/{id}', [EscutaInicialController::
 
 //-----------------------------------CONSULTA(GERA O PRONTUARIO)--------------------------------------------------------
 Route::get('/consulta/listagemEscutaInicial', [ProntuarioController::class, 'index'])->name('listagemEscutaInicial');
-Route::get('/consulta/cadastroProntuario', [ProntuarioController::class, 'form'])->name('cadastroProntuario');
+Route::get('/cadastroProntuario/{paciente_id}/{medico_id}/{enfermeira_id}', [ProntuarioController::class, 'form'])->name('cadastroProntuario');
 Route::post('/consulta/storeProntuario', [ProntuarioController::class, 'store'])->name('storeProntuario');
 Route::get('/consulta/createProntuario', [ProntuarioController::class, 'create'])->name('createProntuario');
 Route::get('/consulta/deletarProntuario/{id}', [ProntuarioController::class, 'destroy'])->name('deletarProntuario');

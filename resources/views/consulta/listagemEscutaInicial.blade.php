@@ -6,10 +6,6 @@
 
     <br>
     <div class="container">
-        <div class="text-end">
-            <a type="button" class="btn btn-primary" href="{{route('cadastroProntuario')}}">Gerar Prontuário</a>
-        </div>
-        <br>
         <div class="row">
             <div class="card" style="max-height: 400px; overflow-y: auto;">
                 <div class="table-responsive text-nowrap">
@@ -19,6 +15,7 @@
                                 <th>Paciente</th>
                                 <th>Médico</th>
                                 <th>Enfermeira</th>
+                                <th>Ação</th> <!-- Nova coluna para o botão de ação -->
                             </tr>
                         </thead>
                     </table>
@@ -26,7 +23,6 @@
             </div>
         </div>
     </div>
-
 
     <script>
         $(document).ready(function() {
@@ -38,15 +34,31 @@
                     { data: 'pacienteSelecionado', name: 'pacienteSelecionado' },
                     { data: 'medicoSelecionado', name: 'medicoSelecionado' },
                     { data: 'enfermeiraSelecionado', name: 'enfermeiraSelecionado' },
-                ]
+                    {
+                        data: null,
+                        name: 'action',
+                        orderable: false,
+                        searchable: false,
+                        render: function(data, type, row) {
+                            return `<a href="{{ url('cadastroProntuario') }}/${row.paciente_id}/${row.medico_id}/${row.enfermeira_id}" class="btn btn-primary">Gerar Prontuário</a>`;
+                        }
+                    }
+                ],
+                rowCallback: function(row, data) {
+                    // Verifica se o checkbox de consulta está marcado
+                    if (data.consulta == 1) {
+                        $(row).addClass('bg-success'); // Aplica a classe 'bg-success' para destacar a linha em verde
+                    }
+                }
             });
         });
-
     </script>
 
-
+    <style>
+        .bg-success {
+            background-color: #d4edda !important;
+            color: #155724;
+        }
+    </style>
 
 @endsection
-
-
-

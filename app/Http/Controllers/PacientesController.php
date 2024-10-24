@@ -74,6 +74,8 @@ class PacientesController extends Controller
         $pacientes->cepPaciente = $request->cepPaciente;
         $pacientes->maePaciente = $request->maePaciente;
         $pacientes->paiPaciente = $request->paiPaciente;
+        $pacientes->postinho = $request->postinho;
+        $pacientes->escuta = $request->escuta;
 
         $pacientes->save();
 

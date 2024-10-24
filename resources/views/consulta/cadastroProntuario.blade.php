@@ -24,34 +24,47 @@
                                 <label class="col-sm-2 col-form-label" for="pacienteSelecionado">Paciente</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" id="pacienteSelecionado" name="pacienteSelecionado">
+                                        <option value="" disabled {{ $pacienteSelecionado ? '' : 'selected' }}>Selecione um paciente</option> 
                                         @foreach ($pacientes as $paciente)
-                                            <option value="{{ $paciente->id }}">{{ $paciente->nomePaciente }}</option>
+                                            <option value="{{ $paciente->id }}" 
+                                                {{ isset($pacienteSelecionado) && $pacienteSelecionado->id == $paciente->id ? 'selected' : '' }}>
+                                                {{ $paciente->nomePaciente }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-
+                            
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="medicoSelecionado">Médico</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" id="medicoSelecionado" name="medicoSelecionado">
+                                        <option value="" disabled {{ $medicoSelecionado ? '' : 'selected' }}>Selecione um médico</option>
                                         @foreach ($medicos as $medico)
-                                            <option value="{{ $medico->id }}">{{ $medico->nomeMedico }}</option>
+                                            <option value="{{ $medico->id }}" 
+                                                {{ isset($medicoSelecionado) && $medicoSelecionado->id == $medico->id ? 'selected' : '' }}>
+                                                {{ $medico->nomeMedico }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-
+                            
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="enfermeiraSelecionado">Enfermeira</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" id="enfermeiraSelecionado" name="enfermeiraSelecionado">
+                                        <option value="" disabled {{ $enfermeiraSelecionada ? '' : 'selected' }}>Selecione uma enfermeira</option>
                                         @foreach ($enfermeiras as $enfermeira)
-                                            <option value="{{ $enfermeira->id }}">{{ $enfermeira->nomeEnfermeira }}</option>
+                                            <option value="{{ $enfermeira->id }}" 
+                                                {{ isset($enfermeiraSelecionada) && $enfermeiraSelecionada->id == $enfermeira->id ? 'selected' : '' }}>
+                                                {{ $enfermeira->nomeEnfermeira }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
+                            
 
 
                             <div class="row mb-3">

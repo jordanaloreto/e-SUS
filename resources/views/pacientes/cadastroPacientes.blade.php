@@ -134,7 +134,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="checkboxes">Paciente faz parte deste Postinho</label>
+                                    <div class="col-sm-10">
+                                        <!-- Checkbox 1 -->
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="postinho" name="postinho" value="1" 
+                                            @if(!@empty($pacientes) && $pacientes->postinho) checked @endif>
+                                        </div>
+                                    </div>
+                                    <label class="col-sm-2 col-form-label" for="checkboxes">Passar o paciente para Escuta Inicial</label>
+                                    <div class="col-sm-10">
+                                        <!-- Checkbox 1 -->
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="escuta" name="escuta" value="1" 
+                                            @if(!@empty($pacientes) && $pacientes->escuta) checked @endif>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row justify-content-end">
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Cadastrar</button>

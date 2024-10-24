@@ -24,13 +24,17 @@
                                 <label class="col-sm-2 col-form-label" for="pacienteSelecionado">Paciente</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" id="pacienteSelecionado" name="pacienteSelecionado">
+                                        <option value="" disabled {{ $pacienteSelecionado ? '' : 'selected' }}>Selecione um paciente</option> 
                                         @foreach ($pacientes as $paciente)
-                                            <option value="{{ $paciente->id }}">{{ $paciente->nomePaciente }}</option>
+                                            <option value="{{ $paciente->id }}" 
+                                                {{ isset($pacienteSelecionado) && $pacienteSelecionado->id == $paciente->id ? 'selected' : '' }}>
+                                                {{ $paciente->nomePaciente }}
+                                            </option>
                                         @endforeach
-
                                     </select>
                                 </div>
                             </div>
+                            
 
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label" for="medicoSelecionado">Médico</label>
@@ -166,6 +170,16 @@
                                         <option value="Amarelo" @if(!@empty($escutaInicial) && $escutaInicial->risco == 'Amarelo') selected @endif>Amarelo</option>
                                         <option value="Vermelho" @if(!@empty($escutaInicial) && $escutaInicial->risco == 'Vermelho') selected @endif>Vermelho</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label" for="checkboxes">Passar o paciente para a Consulta</label>
+                                <div class="col-sm-10">
+                                    <!-- Checkbox 1 -->
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="consulta" name="consulta" value="1" 
+                                        @if(!@empty($escutaInicial) && $escutaInicial->consulta) checked @endif>
+                                    </div>
                                 </div>
                             </div>
 
