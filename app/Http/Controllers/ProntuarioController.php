@@ -70,6 +70,7 @@ class ProntuarioController extends Controller
         return [
             'id' => $escuta->id,
             'pacienteSelecionado' => $paciente ? $paciente->nomePaciente : 'Nome não encontrado',
+            'paciente_id' => $paciente ? $paciente->id : null, 
             'medicoSelecionado' => $medico ? $medico->nomeMedico : 'Nome não encontrado',
             'medico_id' => $medico ? $medico->id : null, // Retorna o ID do médico
             'enfermeiraSelecionado' => $enfermeira ? $enfermeira->nomeEnfermeira : 'Nome não encontrado',
