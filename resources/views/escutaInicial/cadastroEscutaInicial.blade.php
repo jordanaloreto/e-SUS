@@ -73,7 +73,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
                                         <span  class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control altura" id="altura" maxlength="4"
+                                        <input type="text" class="form-control altura" id="altura"
                                             @if (!@empty($escutaInicial)) value="{{ $escutaInicial->altura }}" @endif
                                             id="altura" name="altura" />
                                     </div>
@@ -84,7 +84,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
                                         <span  class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control imc id="imc"" 
+                                        <input type="text" class="form-control imc" id="imc" maxlength="4"
                                             @if (!@empty($escutaInicial)) value="{{ $escutaInicial->imc }}" @endif
                                             id="imc" name="imc" readonly/>
                                     </div>
@@ -106,7 +106,7 @@
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-merge">
                                         <span  class="input-group-text"><i></i></span>
-                                        <input type="text" class="form-control temperatura" id="temperatura" maxlength="4"
+                                        <input type="text" class="form-control temperatura" id="temperatura" maxlength="6"
                                             @if (!@empty($escutaInicial)) value="{{ $escutaInicial->temperatura }}" @endif
                                             id="temperatura" name="temperatura" />
                                     </div>
@@ -208,6 +208,7 @@
         
                     if (!isNaN(peso) && !isNaN(altura) && altura > 0) {
                         var imc = peso / (altura * altura);  // Calcula o IMC
+                        imc = Math.round(imc * 100) / 100;  // Arredonda para duas casas decimais
                         $('#imc').val(imc.toFixed(2));  // Define o valor do campo IMC com duas casas decimais
                         console.log('imc:', imc);
                     } else {
@@ -220,14 +221,7 @@
                 $('#peso, #altura').on('input', function() {
                     calcularIMC();
                 });
-        
-                // Aplica as máscaras aos campos
-                $('.altura').mask('0.00', {
-                    reverse: true
-                });
-                $('.peso').mask('000.00', {
-                    reverse: true
-                });
+                
             });
         </script>
         

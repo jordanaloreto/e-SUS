@@ -391,6 +391,12 @@
             $('.peso').mask('000.00', {
                 reverse: true
             });
+            $('.imc').mask('00.00', {
+                    reverse: true
+            });
+            $('.temperatura').mask('##,#°C', {
+                    reverse: true
+            });
         </script>
 
 </body>
