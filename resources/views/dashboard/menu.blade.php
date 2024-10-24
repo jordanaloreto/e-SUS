@@ -56,13 +56,13 @@
                 <span class="menu-header-text" data-i18n="Apps & Pages">Processos</span>
             </li>
             <li class="menu-item">
-            @if(Auth::user()->permissoes == 1)
+            @if(Auth::user()->permissoes == 0)
                 <a href="{{route('listagemPacienteEscuta')}}" class="menu-link">
                     <i class="fas fa-users"></i>
                     <div>Escuta Inicial </div>
                 </a>
             @endif
-            @if(Auth::user()->permissoes == 2)
+            @if(Auth::user()->permissoes == 0)
                 <a href="{{route('listagemEscutaInicial')}}" class="menu-link">
                     <i class="fas fa-users"></i>
                     <div>Consulta</div>

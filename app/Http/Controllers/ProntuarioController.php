@@ -28,7 +28,7 @@ class ProntuarioController extends Controller
             $escuta->medicoSelecionado = Medicos::find($escuta->medicoSelecionado)->nomeMedico;
             $escuta->enfermeiraSelecionado = Enfermeiras::find($escuta->enfermeiraSelecionado)->nomeEnfermeira;
         }
-        if(Auth::user()->permissoes == 2)
+        if(Auth::user()->permissoes == 0)
             return view('consulta.listagemEscutaInicial', compact('escutaInicial'));
         else{
             return view('dashboard.corpo');
@@ -72,7 +72,7 @@ class ProntuarioController extends Controller
 
     public function indexProntuario()
     {
-        if(Auth::user()->permissoes == 2)
+        if(Auth::user()->permissoes == 0)
             return view('prontuario.listagemProntuario');
         else{
             return view('dashboard.corpo');

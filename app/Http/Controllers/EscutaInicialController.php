@@ -23,7 +23,7 @@ class EscutaInicialController extends Controller
         // $escutaInicial = EscutaInicial::all();
         $pacientes = Pacientes::all();
         // $enfermeiras = Enfermeiras::all();
-        if(Auth::user()->permissoes == 1)
+        if(Auth::user()->permissoes == 0)
             return view('escutaInicial.listagemPacienteEscuta');
         else{
             return view('dashboard.corpo');
