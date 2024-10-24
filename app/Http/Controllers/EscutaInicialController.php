@@ -23,24 +23,24 @@ class EscutaInicialController extends Controller
         // $escutaInicial = EscutaInicial::all();
         $pacientes = Pacientes::all();
         // $enfermeiras = Enfermeiras::all();
-        if(Auth::user()->permissoes == 0)
+        if (Auth::user()->permissoes == 0)
             return view('escutaInicial.listagemPacienteEscuta');
-        else{
+        else {
             return view('dashboard.corpo');
         }
     }
 
     public function form($paciente_id = null)
-{
-    $pacientes = Pacientes::all();
-    $medicos = Medicos::all();
-    $enfermeiras = Enfermeiras::all();
-    
-    // Encontre o paciente selecionado
-    $pacienteSelecionado = Pacientes::find($paciente_id);
+    {
+        $pacientes = Pacientes::all();
+        $medicos = Medicos::all();
+        $enfermeiras = Enfermeiras::all();
 
-    return view('escutaInicial.cadastroEscutaInicial', compact('pacientes', 'medicos', 'enfermeiras', 'pacienteSelecionado'));
-}
+        // Encontre o paciente selecionado
+        $pacienteSelecionado = Pacientes::find($paciente_id);
+
+        return view('escutaInicial.cadastroEscutaInicial', compact('pacientes', 'medicos', 'enfermeiras', 'pacienteSelecionado'));
+    }
 
 
 
@@ -52,7 +52,7 @@ class EscutaInicialController extends Controller
     public function create()
     {
         $pacientes = Pacientes::select(['id', 'nomePaciente', 'cpfPaciente', 'escuta']); // Inclua 'escuta'
-        
+
         return DataTables::of($pacientes)
             ->rawColumns(['nomePaciente', 'cpfPaciente'])
             ->editColumn('nomePaciente', function ($paciente) {
@@ -78,7 +78,7 @@ class EscutaInicialController extends Controller
         } else {
             $escutaInicial = new EscutaInicial();
         }
-    
+
         // Preenche os dados da escuta inicial
         $escutaInicial->pacienteSelecionado = $request->pacienteSelecionado;
         $escutaInicial->medicoSelecionado = $request->medicoSelecionado;
@@ -94,20 +94,20 @@ class EscutaInicialController extends Controller
         $escutaInicial->temperatura = $request->temperatura;
         $escutaInicial->sat = $request->sat;
         $escutaInicial->consulta = $request->consulta;
-    
+
         // Salva os dados da escuta inicial
         $escutaInicial->save();
-    
+
         // Desmarcar o checkbox escuta do paciente
         $paciente = Pacientes::find($request->pacienteSelecionado); // Acessa o paciente usando o ID do paciente selecionado
         if ($paciente) {
             $paciente->escuta = 0; // Desmarca o checkbox
             $paciente->save(); // Salva a alteração
         }
-    
+
         return back(); // Redireciona de volta
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -130,7 +130,7 @@ class EscutaInicialController extends Controller
     {
         $escutaInicial = Pacientes::findOrFail($id);
         return view('escutaInicial.cadastroEscutaInicial')->with('msg', 'Paciente Editado!')
-        ->with('id', $id)->with('escutaInicial', $escutaInicial);
+            ->with('id', $id)->with('escutaInicial', $escutaInicial);
     }
 
     /**

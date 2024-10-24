@@ -54,10 +54,10 @@
                                 <label class="col-sm-2 col-form-label" for="enfermeiraSelecionado">Enfermeira</label>
                                 <div class="col-sm-10">
                                     <select class="form-select" id="enfermeiraSelecionado" name="enfermeiraSelecionado">
-                                        <option value="" disabled {{ $enfermeiraSelecionada ? '' : 'selected' }}>Selecione uma enfermeira</option>
+                                        <option value="" disabled {{ $enfermeiraSelecionado ? '' : 'selected' }}>Selecione uma enfermeira</option>
                                         @foreach ($enfermeiras as $enfermeira)
                                             <option value="{{ $enfermeira->id }}" 
-                                                {{ isset($enfermeiraSelecionada) && $enfermeiraSelecionada->id == $enfermeira->id ? 'selected' : '' }}>
+                                                {{ isset($enfermeiraSelecionado) && $enfermeiraSelecionado->id == $enfermeira->id ? 'selected' : '' }}>
                                                 {{ $enfermeira->nomeEnfermeira }}
                                             </option>
                                         @endforeach

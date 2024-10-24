@@ -40,7 +40,7 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            return `<a href="{{ url('cadastroProntuario') }}/${row.paciente_id}/${row.medico_id}/${row.enfermeira_id}" class="btn btn-primary">Gerar Prontuário</a>`;
+                            return `<a href="{{ url('cadastroProntuario') }}/${data.id}/${data.medico_id}/${data.enfermeira_id}" class="btn btn-primary">Gerar Prontuário</a>`;
                         }
                     }
                 ],
